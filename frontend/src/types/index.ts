@@ -1,0 +1,26 @@
+export interface Program {
+  _id: string;
+  title: string;
+  faculty: string;
+  degree: string;
+  duration: string;
+  description: string;
+  icon: string;
+  featured: boolean;
+}
+
+export interface NewsItem {
+  _id: string;
+  title: string;
+  category: string;
+  excerpt: string;
+  date: string;
+}
+
+export interface ContactForm {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
