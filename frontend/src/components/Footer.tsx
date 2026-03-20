@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo/ugcsl.jpeg';
 import './Footer.css';
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <div className="footer-logo">
-              <div className="logo-icon">UG</div>
+              <img src={logo} alt="UGCSL Logo" className="footer-logo-img" />
               <div>
                 <div className="footer-logo-name">UGCSL</div>
                 <div className="footer-logo-sub">United Global Campus of Sri Lanka</div>

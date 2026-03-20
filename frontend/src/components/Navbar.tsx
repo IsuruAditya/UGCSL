@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import logo from '../assets/logo/ugcsl.jpeg';
 import './Navbar.css';
 
 const navLinks = [
@@ -28,7 +29,7 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-inner">
         <Link to="/" className="navbar-logo">
-          <div className="logo-icon">UG</div>
+          <img src={logo} alt="UGCSL Logo" className="logo-img" />
           <div className="logo-text">
             <span className="logo-name">UGCSL</span>
             <span className="logo-tagline">United Global Campus of Sri Lanka</span>

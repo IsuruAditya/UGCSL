@@ -27,18 +27,11 @@
   gap: 12px;
 }
 
-.logo-icon {
+.logo-img {
   width: 44px;
   height: 44px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
   border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 0.05em;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
