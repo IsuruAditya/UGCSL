@@ -24,7 +24,13 @@ app.use(cors({
 app.use(cookieParser(process.env.COOKIE_SECRET || 'ugcsl-dev-secret'));
 app.use(express.json({ limit: '10kb' }));
 
-const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100, standardHeaders: true, legacyHeaders: false });
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
+  keyGenerator: (req) => req.headers['x-forwarded-for']?.toString().split(',')[0] ?? req.ip ?? 'unknown',
+});
 app.use('/api', limiter);
 
 app.get('/api/csrf-token', (_req: Request, res: Response) => {
