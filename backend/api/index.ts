@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import mongoose from 'mongoose';
 import { Request, Response } from 'express';
 import app from '../src/app';

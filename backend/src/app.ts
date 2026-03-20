@@ -29,7 +29,7 @@ app.use('/api', limiter);
 
 app.get('/api/csrf-token', (_req: Request, res: Response) => {
   const token = randomBytes(32).toString('hex');
-  res.cookie('csrf_token', token, { httpOnly: true, sameSite: 'strict', secure: IS_PROD, signed: true });
+  res.cookie('csrf_token', token, { httpOnly: true, sameSite: IS_PROD ? 'none' : 'strict', secure: IS_PROD, signed: true });
   res.json({ csrfToken: token });
 });
 
