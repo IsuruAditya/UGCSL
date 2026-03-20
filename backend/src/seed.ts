@@ -1,7 +1,7 @@
-import { Router, Request, Response } from 'express';
-import Program from '../models/Program';
-
-const router = Router();
+import 'dotenv/config';
+import mongoose from 'mongoose';
+import Program from './models/Program';
+import News from './models/News';
 
 const seedPrograms = [
   { title: 'Computer Science & Engineering', faculty: 'Faculty of Technology', degree: 'BSc (Hons)', duration: '4 Years', description: 'Cutting-edge curriculum covering AI, software engineering, cybersecurity, and cloud computing.', icon: '💻', featured: true },
@@ -16,19 +16,26 @@ const seedPrograms = [
   { title: 'Social Development', faculty: 'Faculty of Social Sciences', degree: 'BA (Hons)', duration: '3 Years', description: 'Examine community development, policy, and sustainable social change to address real-world challenges.', icon: '🌍', featured: false },
 ];
 
-router.get('/', async (req: Request, res: Response) => {
-  try {
-    const page = Math.max(1, parseInt(req.query.page as string) || 1);
-    const limit = Math.min(50, parseInt(req.query.limit as string) || 20);
-    let programs = await Program.find().skip((page - 1) * limit).limit(limit);
-    if (programs.length === 0 && page === 1) {
-      programs = await Program.insertMany(seedPrograms) as any;
-    }
-    const total = await Program.countDocuments();
-    res.json({ data: programs, total, page, pages: Math.ceil(total / limit) });
-  } catch {
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+const seedNews = [
+  { title: 'UGCSL Ranked Among Top 10 Universities in South Asia', category: 'Achievement', excerpt: 'United Global Campus of Sri Lanka has been recognized for academic excellence and research output in the 2025 QS World University Rankings.', date: new Date('2025-06-01') },
+  { title: 'New Research Centre for Sustainable Technology Inaugurated', category: 'Research', excerpt: 'The state-of-the-art Sustainable Technology Research Centre opens its doors, fostering innovation in renewable energy and green computing.', date: new Date('2025-05-20') },
+  { title: 'International Student Exchange Program Expanded to 30 Countries', category: 'Global', excerpt: 'UGCSL strengthens global partnerships, offering students opportunities to study at partner universities across Europe, Asia, and the Americas.', date: new Date('2025-05-10') },
+];
 
-export default router;
+async function seed() {
+  await mongoose.connect(process.env.MONGODB_URI!);
+  console.log('Connected to MongoDB Atlas');
+
+  await Program.deleteMany({});
+  await Program.insertMany(seedPrograms);
+  console.log(`Seeded ${seedPrograms.length} programs`);
+
+  await News.deleteMany({});
+  await News.insertMany(seedNews);
+  console.log(`Seeded ${seedNews.length} news items`);
+
+  await mongoose.disconnect();
+  console.log('Done');
+}
+
+seed().catch(err => { console.error(err); process.exit(1); });
