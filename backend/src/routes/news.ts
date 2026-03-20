@@ -9,14 +9,17 @@ const seedNews = [
   { title: 'International Student Exchange Program Expanded to 30 Countries', category: 'Global', excerpt: 'UGCSL strengthens global partnerships, offering students opportunities to study at partner universities across Europe, Asia, and the Americas.', date: new Date('2025-05-10') },
 ];
 
-router.get('/', async (_req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
-    let news = await News.find().sort({ date: -1 });
-    if (news.length === 0) {
+    const page = Math.max(1, parseInt(req.query.page as string) || 1);
+    const limit = Math.min(20, parseInt(req.query.limit as string) || 10);
+    let news = await News.find().sort({ date: -1 }).skip((page - 1) * limit).limit(limit);
+    if (news.length === 0 && page === 1) {
       news = await News.insertMany(seedNews) as any;
     }
-    res.json(news);
-  } catch (err) {
+    const total = await News.countDocuments();
+    res.json({ data: news, total, page, pages: Math.ceil(total / limit) });
+  } catch {
     res.status(500).json({ message: 'Server error' });
   }
 });

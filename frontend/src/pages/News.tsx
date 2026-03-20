@@ -1,12 +1,13 @@
 import { useFetch } from '../hooks/useApi';
-import type { NewsItem } from '../types';
+import type { NewsItem, PaginatedResponse } from '../types';
 import './shared.css';
 import './News.css';
 
 const categories = ['All', 'Achievement', 'Research', 'Global', 'Events', 'Academic'];
 
 export default function News() {
-  const { data: news, loading } = useFetch<NewsItem[]>('/news');
+  const { data: res, loading } = useFetch<PaginatedResponse<NewsItem>>('/news');
+  const news = res?.data;
 
   return (
     <main>
@@ -31,7 +32,7 @@ export default function News() {
             <div className="spinner" />
           ) : (
             <div className="news-grid">
-              {news?.map((item, i) => (
+              {news?.map((item: NewsItem, i: number) => (
                 <article key={item._id} className={`news-article card ${i === 0 ? 'featured' : ''}`}>
                   <div className="news-article-img">
                     <span>{item.category[0]}</span>

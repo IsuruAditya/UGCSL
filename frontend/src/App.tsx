@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
 import Home from './pages/Home';
 import About from './pages/About';
 import Programs from './pages/Programs';
@@ -9,27 +10,47 @@ import Admissions from './pages/Admissions';
 import Research from './pages/Research';
 import News from './pages/News';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
-function ScrollToTop() {
+const PAGE_TITLES: Record<string, string> = {
+  '/': 'UGCSL – United Global Campus of Sri Lanka',
+  '/about': 'About Us | UGCSL',
+  '/programs': 'Academic Programs | UGCSL',
+  '/admissions': 'Admissions | UGCSL',
+  '/research': 'Research | UGCSL',
+  '/news': 'News & Events | UGCSL',
+  '/contact': 'Contact Us | UGCSL',
+};
+
+function PageMeta() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = PAGE_TITLES[pathname] ?? 'UGCSL – United Global Campus of Sri Lanka';
+  }, [pathname]);
   return null;
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <PageMeta />
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/programs" element={<Programs />} />
-        <Route path="/admissions" element={<Admissions />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <ErrorBoundary>
+        <div id="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/admissions" element={<Admissions />} />
+            <Route path="/research" element={<Research />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </ErrorBoundary>
       <Footer />
     </BrowserRouter>
   );

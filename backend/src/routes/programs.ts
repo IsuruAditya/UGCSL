@@ -12,14 +12,17 @@ const seedPrograms = [
   { title: 'Data Science & AI', faculty: 'Faculty of Technology', degree: 'BSc (Hons)', duration: '4 Years', description: 'Master machine learning, big data analytics, and artificial intelligence applications.', icon: '🤖', featured: true },
 ];
 
-router.get('/', async (_req: Request, res: Response) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
-    let programs = await Program.find();
-    if (programs.length === 0) {
+    const page = Math.max(1, parseInt(req.query.page as string) || 1);
+    const limit = Math.min(50, parseInt(req.query.limit as string) || 20);
+    let programs = await Program.find().skip((page - 1) * limit).limit(limit);
+    if (programs.length === 0 && page === 1) {
       programs = await Program.insertMany(seedPrograms) as any;
     }
-    res.json(programs);
-  } catch (err) {
+    const total = await Program.countDocuments();
+    res.json({ data: programs, total, page, pages: Math.ceil(total / limit) });
+  } catch {
     res.status(500).json({ message: 'Server error' });
   }
 });

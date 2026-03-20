@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useFetch } from '../hooks/useApi';
-import type { Program, NewsItem } from '../types';
+import type { Program, NewsItem, PaginatedResponse } from '../types';
 import './Home.css';
 
 const stats = [
@@ -27,10 +27,11 @@ const whyUs = [
 ];
 
 export default function Home() {
-  const { data: programs, loading: pLoading } = useFetch<Program[]>('/programs');
-  const { data: news, loading: nLoading } = useFetch<NewsItem[]>('/news');
+  const { data: programsRes, loading: pLoading } = useFetch<PaginatedResponse<Program>>('/programs');
+  const { data: newsRes, loading: nLoading } = useFetch<PaginatedResponse<NewsItem>>('/news');
 
-  const featured = programs?.filter((p) => p.featured).slice(0, 6) ?? [];
+  const featured = programsRes?.data.filter((p) => p.featured).slice(0, 6) ?? [];
+  const news = newsRes?.data ?? [];
 
   return (
     <main>

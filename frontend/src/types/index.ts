@@ -24,3 +24,10 @@ export interface ContactForm {
   subject: string;
   message: string;
 }
+
+export interface PaginatedResponse<T> {
+  data: T[];
+  total: number;
+  page: number;
+  pages: number;
+}

@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFetch } from '../hooks/useApi';
-import type { Program } from '../types';
+import type { Program, PaginatedResponse } from '../types';
 import './shared.css';
 import './Programs.css';
 
 const faculties = ['All', 'Faculty of Technology', 'Faculty of Business', 'Faculty of Medicine', 'Faculty of Law', 'Faculty of Built Environment'];
 
 export default function Programs() {
-  const { data: programs, loading } = useFetch<Program[]>('/programs');
+  const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');
   const [filter, setFilter] = useState('All');
   const [search, setSearch] = useState('');
 
-  const filtered = programs?.filter((p) => {
+  const filtered = res?.data.filter((p) => {
     const matchFaculty = filter === 'All' || p.faculty === filter;
     const matchSearch = p.title.toLowerCase().includes(search.toLowerCase());
     return matchFaculty && matchSearch;
