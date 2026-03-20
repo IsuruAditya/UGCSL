@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --watch src --ext ts --exec ts-node src/index.ts",
     "build": "tsc",
-    "vercel-build": "tsc -p tsconfig.vercel.json",
+    "vercel-build": "echo 'Vercel builds via @vercel/node'",
     "start": "node dist/index.js"
   },
   "keywords": [],
