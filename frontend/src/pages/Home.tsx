@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useFetch } from '../hooks/useApi';
 import type { Program, NewsItem, PaginatedResponse } from '../types';
+import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
 const stats = [
@@ -71,6 +72,11 @@ export default function Home() {
         <div className="hero-scroll">
           <div className="scroll-indicator" />
         </div>
+      </section>
+
+      {/* Banner */}
+      <section className="home-banner">
+        <img src={banner} alt="United Global Campus of Sri Lanka" />
       </section>
 
       {/* Faculties */}
