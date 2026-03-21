@@ -4,9 +4,9 @@ import News from '../models/News';
 const router = Router();
 
 const seedNews = [
-  { title: 'UGCSL Ranked Among Top 10 Universities in South Asia', category: 'Achievement', excerpt: 'United Global Campus of Sri Lanka has been recognized for academic excellence and research output in the 2025 QS World University Rankings.', date: new Date('2025-06-01') },
-  { title: 'New Research Centre for Sustainable Technology Inaugurated', category: 'Research', excerpt: 'The state-of-the-art Sustainable Technology Research Centre opens its doors, fostering innovation in renewable energy and green computing.', date: new Date('2025-05-20') },
-  { title: 'International Student Exchange Program Expanded to 30 Countries', category: 'Global', excerpt: 'UGCSL strengthens global partnerships, offering students opportunities to study at partner universities across Europe, Asia, and the Americas.', date: new Date('2025-05-10') },
+  { title: 'UGCSL Opens Admissions for Semester 1 – 2026', category: 'Admissions', excerpt: 'United Global Campus of Sri Lanka is now accepting applications for Semester 1, 2026. Diploma programs in Psychology, Human Rights Studies, Business and Management, and Social Development are open for enrollment.', date: new Date('2026-03-01') },
+  { title: 'UGCSL Officially Established as a Higher Education Institution', category: 'Announcement', excerpt: 'United Global Campus (Pvt) Ltd. has been officially established with a vision to deliver nationally and internationally recognized higher education programs in Sri Lanka.', date: new Date('2026-01-15') },
+  { title: 'Diploma Programs Designed for the Modern Professional', category: 'Academic', excerpt: 'UGCSL introduces four diploma programs focused on real-world skills and global relevance — Psychology, Human Rights Studies, Business and Management, and Social Development.', date: new Date('2026-02-10') },
 ];
 
 router.get('/', async (req: Request, res: Response) => {

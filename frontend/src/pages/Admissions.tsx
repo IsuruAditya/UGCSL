@@ -15,9 +15,10 @@ const requirements = [
 ];
 
 const intakes = [
-  { semester: 'Semester 1 – 2025', deadline: 'August 31, 2025', status: 'Open' },
-  { semester: 'Semester 2 – 2025', deadline: 'December 31, 2025', status: 'Upcoming' },
-  { semester: 'Semester 1 – 2026', deadline: 'March 31, 2026', status: 'Upcoming' },
+  { semester: 'Semester 1 – 2025', deadline: 'August 31, 2025', status: 'Closed' },
+  { semester: 'Semester 2 – 2025', deadline: 'December 31, 2025', status: 'Closed' },
+  { semester: 'Semester 1 – 2026', deadline: 'March 31, 2026', status: 'Open' },
+  { semester: 'Semester 2 – 2026', deadline: 'August 31, 2026', status: 'Upcoming' },
 ];
 
 export default function Admissions() {
@@ -28,7 +29,7 @@ export default function Admissions() {
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>Admissions</span>
           <h1 className="page-hero-title">Begin Your Journey<br />at UGCSL</h1>
-          <p>Applications for 2025/2026 are now open. Be among the first to join United Global Campus of Sri Lanka.</p>
+          <p>Applications for Semester 1 – 2026 are now open. Be among the first to join United Global Campus of Sri Lanka.</p>
           <div style={{ marginTop: '32px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-primary">Apply Online →</Link>
             <a href="#requirements" className="btn btn-outline">View Requirements</a>

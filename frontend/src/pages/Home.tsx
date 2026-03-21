@@ -47,7 +47,7 @@ export default function Home() {
           </div>
         </div>
         <div className="container hero-content">
-          <div className="hero-badge">🎓 Admissions Open 2025 / 2026</div>
+          <div className="hero-badge">🎓 Admissions Open – Semester 1, 2026</div>
           <h1 className="hero-title">
             Begin Your Journey at<br />
             <span className="hero-highlight">United Global Campus</span><br />
