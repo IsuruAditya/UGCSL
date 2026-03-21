@@ -10,12 +10,12 @@ const leadership = [
 ];
 
 const milestones = [
-  { year: '2005', event: 'UGCSL founded with 3 faculties and 500 students' },
-  { year: '2010', event: 'Received full university accreditation from UGC Sri Lanka' },
-  { year: '2015', event: 'Launched international exchange programs with 20 universities' },
-  { year: '2019', event: 'Opened state-of-the-art Research & Innovation Centre' },
-  { year: '2022', event: 'Ranked #1 private university in Sri Lanka' },
-  { year: '2025', event: 'Expanded to 120+ programs with 25,000+ students' },
+  { year: '2005', event: 'United Global Campus (Pvt) Ltd. established with a vision for globally recognized higher education' },
+  { year: '2010', event: 'Launched first nationally recognized diploma and degree programs' },
+  { year: '2015', event: 'Established partnerships with international universities and professional bodies' },
+  { year: '2019', event: 'Expanded program portfolio to include research, innovation, and leadership development' },
+  { year: '2022', event: 'Strengthened links between education, professional training, and employability' },
+  { year: '2025', event: 'Advancing towards becoming a leading higher education hub in South Asia' },
 ];
 
 export default function About() {
@@ -26,8 +26,8 @@ export default function About() {
         <div className="page-hero-bg" />
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>About UGCSL</span>
-          <h1 className="page-hero-title">Shaping Global Leaders<br />Since 2005</h1>
-          <p>Two decades of academic excellence, innovation, and transformative education in the heart of Sri Lanka.</p>
+          <h1 className="page-hero-title">United Global Campus<br />(Pvt) Ltd.</h1>
+          <p>Delivering innovative, quality-driven academic programs that develop knowledgeable, skilled, and socially responsible global citizens.</p>
         </div>
       </section>
 
@@ -35,20 +35,29 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div className="mv-grid">
-            <div className="mv-card mission">
-              <div className="mv-icon">🎯</div>
-              <h3>Our Mission</h3>
-              <p>To provide transformative, globally relevant education that empowers students to become innovative leaders, critical thinkers, and responsible global citizens who contribute meaningfully to society.</p>
-            </div>
             <div className="mv-card vision">
               <div className="mv-icon">🔭</div>
               <h3>Our Vision</h3>
-              <p>To be the leading university in South Asia, recognized globally for academic excellence, groundbreaking research, and producing graduates who shape the future of their industries and communities.</p>
+              <p>To become a globally recognized center of higher education by delivering innovative, quality-driven academic programs that develop knowledgeable, skilled, and socially responsible global citizens.</p>
+            </div>
+            <div className="mv-card mission">
+              <div className="mv-icon">🎯</div>
+              <h3>Our Mission</h3>
+              <p>To deliver nationally and internationally recognized higher education programs that integrate academic excellence, practical skills, research, innovation, and leadership development, while empowering students to achieve professional success and contribute meaningfully to society.</p>
             </div>
             <div className="mv-card values">
               <div className="mv-icon">💎</div>
-              <h3>Our Values</h3>
-              <p>Excellence, Integrity, Innovation, Inclusivity, and Global Citizenship form the foundation of everything we do at UGCSL.</p>
+              <h3>Core Objectives</h3>
+              <ul style={{textAlign:'left', paddingLeft:'1.2rem', margin:0}}>
+                <li>Design and deliver nationally and internationally recognized certificates, diplomas, degrees, and professional programs.</li>
+                <li>Create a comprehensive learning environment integrating academic knowledge, practical skills, innovation, and leadership.</li>
+                <li>Promote quality higher education based on research, innovation, and societal needs.</li>
+                <li>Expand global education opportunities through partnerships with local and international universities and industries.</li>
+                <li>Strengthen the link between education, professional training, and employability.</li>
+                <li>Operate in compliance with legal, ethical, and quality assurance standards.</li>
+                <li>Provide inclusive, equitable, and globally competitive higher education for all segments of society.</li>
+                <li>Contribute to positioning Sri Lanka as a leading higher education hub in South Asia.</li>
+              </ul>
             </div>
           </div>
         </div>
