@@ -101,6 +101,33 @@ export default function About() {
         </div>
       </section>
 
+      {/* Leadership */}
+      <section className="section bg-soft">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Leadership</span>
+            <h2 className="section-title">Our Academic Team</h2>
+            <p className="section-subtitle">Led by experienced academics and industry professionals dedicated to delivering quality higher education.</p>
+          </div>
+          <div className="grid-4">
+            {[
+              { name: 'To Be Announced', role: 'Vice Chancellor', emoji: '🎓' },
+              { name: 'To Be Announced', role: 'Dean of Academics', emoji: '📚' },
+              { name: 'To Be Announced', role: 'Dean of Research', emoji: '🔬' },
+              { name: 'To Be Announced', role: 'Dean of Students', emoji: '🤝' },
+            ].map((l) => (
+              <div key={l.role} className="leader-card card">
+                <div className="leader-avatar">{l.emoji}</div>
+                <div className="leader-info">
+                  <h4>{l.name}</h4>
+                  <p>{l.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Roadmap */}
       <section className="section">
         <div className="container">

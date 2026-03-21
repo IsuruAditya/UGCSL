@@ -4,16 +4,10 @@ import Program from '../models/Program';
 const router = Router();
 
 const seedPrograms = [
-  { title: 'Computer Science & Engineering', faculty: 'Faculty of Technology', degree: 'BSc (Hons)', duration: '4 Years', description: 'Cutting-edge curriculum covering AI, software engineering, cybersecurity, and cloud computing.', icon: '💻', featured: true },
-  { title: 'Business Administration', faculty: 'Faculty of Business', degree: 'BBA (Hons)', duration: '3 Years', description: 'Develop leadership skills with a global business perspective, covering finance, marketing, and strategy.', icon: '📊', featured: true },
-  { title: 'Medicine & Surgery', faculty: 'Faculty of Medicine', degree: 'MBBS', duration: '5 Years', description: 'World-class medical education with state-of-the-art simulation labs and clinical training.', icon: '🏥', featured: true },
-  { title: 'Law & Legal Studies', faculty: 'Faculty of Law', degree: 'LLB (Hons)', duration: '3 Years', description: 'Comprehensive legal education with moot court practice and international law exposure.', icon: '⚖️', featured: true },
-  { title: 'Architecture & Design', faculty: 'Faculty of Built Environment', degree: 'BArch', duration: '5 Years', description: 'Creative and technical training in sustainable architecture and urban design.', icon: '🏛️', featured: false },
-  { title: 'Data Science & AI', faculty: 'Faculty of Technology', degree: 'BSc (Hons)', duration: '4 Years', description: 'Master machine learning, big data analytics, and artificial intelligence applications.', icon: '🤖', featured: true },
-  { title: 'Psychology', faculty: 'Faculty of Social Sciences', degree: 'BSc (Hons)', duration: '3 Years', description: 'Explore human behaviour, mental health, and cognitive processes through evidence-based study and clinical practice.', icon: '🧠', featured: true },
-  { title: 'Human Rights Studies', faculty: 'Faculty of Social Sciences', degree: 'BA (Hons)', duration: '3 Years', description: 'Study international human rights law, advocacy, and social justice with a focus on global and regional contexts.', icon: '🕊️', featured: false },
-  { title: 'Business and Management', faculty: 'Faculty of Business', degree: 'BSc (Hons)', duration: '3 Years', description: 'Build expertise in organisational management, entrepreneurship, and strategic decision-making for a global economy.', icon: '📈', featured: true },
-  { title: 'Social Development', faculty: 'Faculty of Social Sciences', degree: 'BA (Hons)', duration: '3 Years', description: 'Examine community development, policy, and sustainable social change to address real-world challenges.', icon: '🌍', featured: false },
+  { title: 'Psychology', faculty: 'Faculty of Social Sciences', degree: 'Diploma', duration: '1 Year', description: 'Explore human behaviour, mental health, and cognitive processes through evidence-based study and practical application.', icon: '🧠', featured: true },
+  { title: 'Human Rights Studies', faculty: 'Faculty of Social Sciences', degree: 'Diploma', duration: '1 Year', description: 'Study international human rights law, advocacy, and social justice with a focus on global and regional contexts.', icon: '🕊️', featured: true },
+  { title: 'Business and Management', faculty: 'Faculty of Business', degree: 'Diploma', duration: '1 Year', description: 'Build expertise in organisational management, entrepreneurship, and strategic decision-making for a competitive economy.', icon: '📈', featured: true },
+  { title: 'Social Development', faculty: 'Faculty of Social Sciences', degree: 'Diploma', duration: '1 Year', description: 'Examine community development, policy, and sustainable social change to address real-world challenges.', icon: '🌍', featured: true },
 ];
 
 router.get('/', async (req: Request, res: Response) => {

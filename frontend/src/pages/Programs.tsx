@@ -5,7 +5,7 @@ import type { Program, PaginatedResponse } from '../types';
 import './shared.css';
 import './Programs.css';
 
-const faculties = ['All', 'Faculty of Technology', 'Faculty of Business', 'Faculty of Medicine', 'Faculty of Law', 'Faculty of Built Environment'];
+const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business', 'Faculty of Technology', 'Faculty of Law', 'Faculty of Medicine', 'Faculty of Built Environment'];
 
 export default function Programs() {
   const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');
@@ -25,7 +25,7 @@ export default function Programs() {
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>Academics</span>
           <h1 className="page-hero-title">Explore Our Programs</h1>
-          <p>120+ undergraduate and postgraduate programs across 6 world-class faculties.</p>
+          <p>Nationally and internationally recognized diploma and degree programs designed for the next generation of professionals.</p>
         </div>
       </section>
 

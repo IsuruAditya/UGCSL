@@ -3,20 +3,20 @@ import './shared.css';
 import './Admissions.css';
 
 const steps = [
-  { num: '01', title: 'Choose Your Program', desc: 'Browse our 120+ programs and find the perfect fit for your career goals.' },
-  { num: '02', title: 'Check Requirements', desc: 'Review entry requirements, English proficiency, and supporting documents needed.' },
-  { num: '03', title: 'Submit Application', desc: 'Complete the online application form and upload all required documents.' },
-  { num: '04', title: 'Receive Decision', desc: 'Get your admission decision within 2-3 weeks of submitting a complete application.' },
+  { num: '01', title: 'Choose Your Program', desc: 'Browse our diploma and degree programs and find the right fit for your career goals.' },
+  { num: '02', title: 'Check Requirements', desc: 'Review entry requirements and supporting documents needed for your chosen program.' },
+  { num: '03', title: 'Submit Application', desc: 'Complete the application form and upload all required documents.' },
+  { num: '04', title: 'Receive Decision', desc: 'Get your admission decision within 2–3 weeks of submitting a complete application.' },
 ];
 
 const requirements = [
-  { level: 'Undergraduate', icon: '🎓', items: ['A/L or equivalent qualification', 'Minimum 3 passes at A/L', 'English proficiency (IELTS 5.5+)', 'Personal statement', 'Two academic references'] },
-  { level: 'Postgraduate', icon: '📚', items: ['Relevant bachelor\'s degree (2nd class or above)', 'Work experience (for MBA/professional programs)', 'English proficiency (IELTS 6.0+)', 'Research proposal (for research programs)', 'Two professional references'] },
+  { level: 'Diploma Programs', icon: '🎓', items: ['O/L or equivalent qualification', 'Minimum credits in relevant subjects', 'English proficiency', 'Completed application form', 'Copy of NIC or passport'] },
+  { level: 'Degree Programs', icon: '📚', items: ['A/L or equivalent qualification', 'Minimum passes at A/L', 'English proficiency (IELTS 5.5+ or equivalent)', 'Personal statement', 'Two academic references'] },
 ];
 
 const intakes = [
-  { semester: 'Semester 1 – 2025', deadline: 'March 31, 2025', status: 'Closed' },
-  { semester: 'Semester 2 – 2025', deadline: 'August 31, 2025', status: 'Open' },
+  { semester: 'Semester 1 – 2025', deadline: 'August 31, 2025', status: 'Open' },
+  { semester: 'Semester 2 – 2025', deadline: 'December 31, 2025', status: 'Upcoming' },
   { semester: 'Semester 1 – 2026', deadline: 'March 31, 2026', status: 'Upcoming' },
 ];
 
@@ -28,7 +28,7 @@ export default function Admissions() {
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>Admissions</span>
           <h1 className="page-hero-title">Begin Your Journey<br />at UGCSL</h1>
-          <p>Applications for 2025/2026 are now open. Join our diverse community of 25,000+ students.</p>
+          <p>Applications for 2025/2026 are now open. Be among the first to join United Global Campus of Sri Lanka.</p>
           <div style={{ marginTop: '32px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-primary">Apply Online →</Link>
             <a href="#requirements" className="btn btn-outline">View Requirements</a>
@@ -103,7 +103,7 @@ export default function Admissions() {
           <div className="fees-banner">
             <div>
               <h2>Scholarships & Financial Aid</h2>
-              <p>UGCSL offers merit-based scholarships covering up to 100% of tuition fees. Over LKR 500 million in scholarships awarded annually.</p>
+              <p>UGCSL offers merit-based scholarships and financial assistance to eligible students. Contact us to learn more about available opportunities.</p>
             </div>
             <Link to="/contact" className="btn btn-primary">Enquire About Scholarships →</Link>
           </div>
