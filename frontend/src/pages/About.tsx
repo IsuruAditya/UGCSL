@@ -1,21 +1,13 @@
 import { Link } from 'react-router-dom';
+import banner from '../assets/campus/banner.jpeg';
 import './shared.css';
 import './About.css';
 
-const leadership = [
-  { name: 'Prof. Arjuna Perera', role: 'Vice Chancellor', emoji: '👨‍🏫' },
-  { name: 'Dr. Nirmala Silva', role: 'Dean of Academics', emoji: '👩‍🔬' },
-  { name: 'Prof. Rajan Mendis', role: 'Dean of Research', emoji: '👨‍💼' },
-  { name: 'Dr. Priya Fernando', role: 'Dean of Students', emoji: '👩‍💼' },
-];
-
-const milestones = [
-  { year: '2005', event: 'United Global Campus (Pvt) Ltd. established with a vision for globally recognized higher education' },
-  { year: '2010', event: 'Launched first nationally recognized diploma and degree programs' },
-  { year: '2015', event: 'Established partnerships with international universities and professional bodies' },
-  { year: '2019', event: 'Expanded program portfolio to include research, innovation, and leadership development' },
-  { year: '2022', event: 'Strengthened links between education, professional training, and employability' },
-  { year: '2025', event: 'Advancing towards becoming a leading higher education hub in South Asia' },
+const roadmap = [
+  { year: '2025', event: 'United Global Campus (Pvt) Ltd. officially established — first intake of students welcomed' },
+  { year: '2026', event: 'Expand program offerings and establish partnerships with international universities and professional bodies' },
+  { year: '2027', event: 'Launch research initiatives and strengthen industry collaboration across Sri Lanka' },
+  { year: '2028', event: 'Grow into a fully recognized higher education institution contributing to South Asia\'s education landscape' },
 ];
 
 export default function About() {
@@ -26,9 +18,14 @@ export default function About() {
         <div className="page-hero-bg" />
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>About UGCSL</span>
-          <h1 className="page-hero-title">United Global Campus<br />(Pvt) Ltd.</h1>
-          <p>Delivering innovative, quality-driven academic programs that develop knowledgeable, skilled, and socially responsible global citizens.</p>
+          <h1 className="page-hero-title">A New Vision for<br />Higher Education</h1>
+          <p>United Global Campus (Pvt) Ltd. — a newly established institution committed to delivering globally recognized, quality-driven higher education in Sri Lanka.</p>
         </div>
+      </section>
+
+      {/* Banner */}
+      <section className="campus-banner">
+        <img src={banner} alt="United Global Campus of Sri Lanka" />
       </section>
 
       {/* Mission & Vision */}
@@ -48,11 +45,11 @@ export default function About() {
             <div className="mv-card values">
               <div className="mv-icon">💎</div>
               <h3>Core Objectives</h3>
-              <ul style={{textAlign:'left', paddingLeft:'1.2rem', margin:0}}>
+              <ul style={{ textAlign: 'left', paddingLeft: '1.2rem', margin: 0 }}>
                 <li>Design and deliver nationally and internationally recognized certificates, diplomas, degrees, and professional programs.</li>
                 <li>Create a comprehensive learning environment integrating academic knowledge, practical skills, innovation, and leadership.</li>
                 <li>Promote quality higher education based on research, innovation, and societal needs.</li>
-                <li>Expand global education opportunities through partnerships with local and international universities and industries.</li>
+                <li>Expand global opportunities through partnerships with local and international universities and industries.</li>
                 <li>Strengthen the link between education, professional training, and employability.</li>
                 <li>Operate in compliance with legal, ethical, and quality assurance standards.</li>
                 <li>Provide inclusive, equitable, and globally competitive higher education for all segments of society.</li>
@@ -69,14 +66,21 @@ export default function About() {
           <div className="campus-grid">
             <div>
               <span className="section-label">Our Campus</span>
-              <h2 className="section-title">A World-Class Learning Environment</h2>
-              <p className="section-subtitle">Spread across 120 acres in Colombo, our campus features cutting-edge facilities designed to inspire creativity and collaboration.</p>
+              <h2 className="section-title">A Modern Learning Environment</h2>
+              <p className="section-subtitle">Our campus is designed from the ground up to inspire creativity, collaboration, and innovation — equipped with modern facilities to support every aspect of student life.</p>
               <ul className="campus-features">
-                {['Modern lecture halls with smart technology', 'Advanced research laboratories', 'Digital library with 500,000+ resources', 'Sports complex & wellness centre', 'Student innovation hub & maker space', 'International student residences'].map((f) => (
+                {[
+                  'Modern lecture halls with smart technology',
+                  'Well-equipped laboratories',
+                  'Digital library and learning resources',
+                  'Student common areas and collaboration spaces',
+                  'Innovation and project workspace',
+                  'Accessible and inclusive campus design',
+                ].map((f) => (
                   <li key={f}><span className="check">✓</span>{f}</li>
                 ))}
               </ul>
-              <Link to="/contact" className="btn btn-dark" style={{ marginTop: '32px' }}>Schedule a Campus Tour →</Link>
+              <Link to="/contact" className="btn btn-dark" style={{ marginTop: '32px' }}>Get in Touch →</Link>
             </div>
             <div className="campus-visual">
               <div className="campus-img-main">
@@ -86,7 +90,7 @@ export default function About() {
                 </div>
               </div>
               <div className="campus-img-grid">
-                {['🔬 Research Lab', '📚 Library', '🏃 Sports Complex'].map((item) => (
+                {['💻 Tech Lab', '📚 Library', '🤝 Common Area'].map((item) => (
                   <div key={item} className="campus-img-small">
                     <span>{item}</span>
                   </div>
@@ -97,42 +101,21 @@ export default function About() {
         </div>
       </section>
 
-      {/* Timeline */}
+      {/* Roadmap */}
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Our Journey</span>
-            <h2 className="section-title">Two Decades of Excellence</h2>
+            <span className="section-label">Looking Ahead</span>
+            <h2 className="section-title">Our Roadmap</h2>
           </div>
           <div className="timeline">
-            {milestones.map((m, i) => (
+            {roadmap.map((m, i) => (
               <div key={m.year} className={`timeline-item ${i % 2 === 0 ? 'left' : 'right'}`}>
                 <div className="timeline-content">
                   <span className="timeline-year">{m.year}</span>
                   <p>{m.event}</p>
                 </div>
                 <div className="timeline-dot" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership */}
-      <section className="section bg-soft">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">Leadership</span>
-            <h2 className="section-title">Meet Our Leaders</h2>
-          </div>
-          <div className="grid-4">
-            {leadership.map((l) => (
-              <div key={l.name} className="leader-card card">
-                <div className="leader-avatar">{l.emoji}</div>
-                <div className="leader-info">
-                  <h4>{l.name}</h4>
-                  <p>{l.role}</p>
-                </div>
               </div>
             ))}
           </div>

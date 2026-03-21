@@ -5,26 +5,26 @@ import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
 const stats = [
-  { value: '25,000+', label: 'Students Enrolled' },
-  { value: '120+', label: 'Academic Programs' },
-  { value: '98%', label: 'Graduate Employment' },
-  { value: '60+', label: 'Global Partnerships' },
+  { value: '10+', label: 'Academic Programs' },
+  { value: '2025', label: 'Established' },
+  { value: '100%', label: 'Qualified Faculty' },
+  { value: 'Global', label: 'Recognition' },
 ];
 
 const faculties = [
-  { name: 'Technology & Computing', icon: '💻', programs: 12 },
-  { name: 'Business & Management', icon: '📊', programs: 8 },
-  { name: 'Medicine & Health', icon: '🏥', programs: 10 },
-  { name: 'Law & Social Sciences', icon: '⚖️', programs: 6 },
-  { name: 'Arts & Humanities', icon: '🎨', programs: 9 },
-  { name: 'Engineering', icon: '⚙️', programs: 11 },
+  { name: 'Technology & Computing', icon: '💻', programs: 2 },
+  { name: 'Business & Management', icon: '📊', programs: 2 },
+  { name: 'Social Sciences', icon: '🌍', programs: 3 },
+  { name: 'Law & Legal Studies', icon: '⚖️', programs: 1 },
+  { name: 'Medicine & Health', icon: '🏥', programs: 1 },
+  { name: 'Built Environment', icon: '🏛️', programs: 1 },
 ];
 
 const whyUs = [
-  { icon: '🌍', title: 'Global Recognition', desc: 'Degrees recognized by 60+ international universities and professional bodies worldwide.' },
-  { icon: '🔬', title: 'Research Excellence', desc: 'State-of-the-art research facilities and active collaboration with industry leaders.' },
-  { icon: '🎯', title: 'Career-Focused', desc: 'Dedicated career services with 98% graduate employment within 6 months.' },
-  { icon: '🏆', title: 'Award-Winning Faculty', desc: 'Learn from internationally acclaimed academics and industry practitioners.' },
+  { icon: '🌍', title: 'Globally Aligned Programs', desc: 'Nationally and internationally recognized qualifications designed for a competitive global landscape.' },
+  { icon: '🎓', title: 'Expert Faculty', desc: 'Learn from qualified academics and industry practitioners committed to your success.' },
+  { icon: '🎯', title: 'Career-Ready Education', desc: 'Programs built to bridge education, professional training, and real-world employability.' },
+  { icon: '🤝', title: 'Inclusive & Accessible', desc: 'Equitable higher education opportunities open to all segments of society.' },
 ];
 
 export default function Home() {
@@ -49,12 +49,12 @@ export default function Home() {
         <div className="container hero-content">
           <div className="hero-badge">🎓 Admissions Open 2025 / 2026</div>
           <h1 className="hero-title">
-            Shape Your Future at<br />
+            Begin Your Journey at<br />
             <span className="hero-highlight">United Global Campus</span><br />
             of Sri Lanka
           </h1>
           <p className="hero-subtitle">
-            A world-class institution where innovation meets tradition. Discover 120+ programs designed to prepare you for a rapidly evolving global landscape.
+            A newly established higher education institution built on a vision of global excellence — offering nationally and internationally recognized programs for the next generation of leaders.
           </p>
           <div className="hero-actions">
             <Link to="/admissions" className="btn btn-primary">Explore Programs →</Link>
@@ -203,7 +203,7 @@ export default function Home() {
         <div className="container cta-inner">
           <div>
             <h2>Ready to Begin Your Journey?</h2>
-            <p>Join 25,000+ students building their future at UGCSL. Applications for 2025/2026 are now open.</p>
+            <p>Be among the first to join United Global Campus of Sri Lanka. Applications for 2025/2026 are now open.</p>
           </div>
           <div className="cta-actions">
             <Link to="/admissions" className="btn btn-primary">Apply Now</Link>
