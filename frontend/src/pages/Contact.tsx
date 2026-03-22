@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { submitContact } from '../hooks/useApi';
 import type { ContactForm } from '../types';
 import './shared.css';
@@ -6,18 +7,18 @@ import './Contact.css';
 
 const initialForm: ContactForm = { name: '', email: '', phone: '', subject: '', message: '' };
 
-const subjects = ['General Enquiry', 'Admissions', 'Programs Information', 'Research Collaboration', 'Media & Press', 'Other'];
-
-const contactInfo = [
-  { icon: '📍', label: 'Address', value: 'Sri Lanka' },
-  { icon: '📞', label: 'Phone', value: 'To Be Updated' },
-  { icon: '✉️', label: 'Email', value: 'info@ugcsl.edu.lk' },
-  { icon: '🕐', label: 'Office Hours', value: 'Mon–Fri: 8:00 AM – 5:00 PM' },
-];
-
 export default function Contact() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<ContactForm>(initialForm);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const subjects = t('contact.form.subjects', { returnObjects: true }) as string[];
+
+  const contactInfo = [
+    { icon: '📍', label: 'Address', value: t('contact.address') },
+    { icon: '✉️', label: 'Email', value: t('contact.email') },
+    { icon: '🕐', label: 'Office Hours', value: t('contact.officeHours') },
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -40,20 +41,18 @@ export default function Contact() {
       <section className="page-hero">
         <div className="page-hero-bg" />
         <div className="container page-hero-content">
-          <span className="section-label" style={{ color: 'var(--accent-light)' }}>Contact Us</span>
-          <h1 className="page-hero-title">We'd Love to Hear<br />From You</h1>
-          <p>Have questions about admissions, programs, or online learning? Our team is here to help.</p>
+          <span className="section-label" style={{ color: 'var(--accent-light)' }}>{t('contact.label')}</span>
+          <h1 className="page-hero-title">{t('contact.heroTitle1')}<br />{t('contact.heroTitle2')}</h1>
+          <p>{t('contact.heroDesc')}</p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
           <div className="contact-grid">
-            {/* Info */}
             <div className="contact-info">
-              <h2>Get in Touch</h2>
-              <p>Reach out to us through any of the channels below, or fill in the form and we'll get back to you within 24 hours.</p>
-
+              <h2>{t('contact.getInTouch')}</h2>
+              <p>{t('contact.getInTouchDesc')}</p>
               <div className="contact-details">
                 {contactInfo.map((c) => (
                   <div key={c.label} className="contact-detail">
@@ -65,59 +64,54 @@ export default function Contact() {
                   </div>
                 ))}
               </div>
-
               <div className="map-placeholder">
                 <span>🗺️</span>
-                <p>Colombo, Sri Lanka</p>
-                <small>Interactive map coming soon</small>
+                <p>{t('contact.mapPlaceholder')}</p>
+                <small>{t('contact.mapComingSoon')}</small>
               </div>
             </div>
 
-            {/* Form */}
             <div className="contact-form-wrap">
-              <h2>Send a Message</h2>
-
+              <h2>{t('contact.sendMessage')}</h2>
               {status === 'success' ? (
                 <div className="form-success">
                   <span>✅</span>
-                  <h3>Message Sent!</h3>
-                  <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
-                  <button className="btn btn-dark" onClick={() => setStatus('idle')}>Send Another Message</button>
+                  <h3>{t('contact.successTitle')}</h3>
+                  <p>{t('contact.successDesc')}</p>
+                  <button className="btn btn-dark" onClick={() => setStatus('idle')}>{t('contact.sendAnother')}</button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="contact-form">
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Full Name *</label>
-                      <input name="name" value={form.name} onChange={handleChange} placeholder="Your full name" required />
+                      <label>{t('contact.form.fullName')}</label>
+                      <input name="name" value={form.name} onChange={handleChange} placeholder={t('contact.form.namePlaceholder')} required />
                     </div>
                     <div className="form-group">
-                      <label>Email Address *</label>
-                      <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" required />
+                      <label>{t('contact.form.email')}</label>
+                      <input name="email" type="email" value={form.email} onChange={handleChange} placeholder={t('contact.form.emailPlaceholder')} required />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>Phone Number</label>
-                      <input name="phone" value={form.phone} onChange={handleChange} placeholder="+94 XX XXX XXXX" />
+                      <label>{t('contact.form.phone')}</label>
+                      <input name="phone" value={form.phone} onChange={handleChange} placeholder={t('contact.form.phonePlaceholder')} />
                     </div>
                     <div className="form-group">
-                      <label>Subject *</label>
+                      <label>{t('contact.form.subject')}</label>
                       <select name="subject" value={form.subject} onChange={handleChange} required>
-                        <option value="">Select a subject</option>
+                        <option value="">{t('contact.form.subjectPlaceholder')}</option>
                         {subjects.map((s) => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
                   </div>
                   <div className="form-group">
-                    <label>Message *</label>
-                    <textarea name="message" value={form.message} onChange={handleChange} placeholder="Tell us how we can help you..." rows={5} required />
+                    <label>{t('contact.form.message')}</label>
+                    <textarea name="message" value={form.message} onChange={handleChange} placeholder={t('contact.form.messagePlaceholder')} rows={5} required />
                   </div>
-                  {status === 'error' && (
-                    <p className="form-error">Something went wrong. Please try again.</p>
-                  )}
+                  {status === 'error' && <p className="form-error">{t('contact.form.error')}</p>}
                   <button type="submit" className="btn btn-dark form-submit" disabled={status === 'loading'}>
-                    {status === 'loading' ? 'Sending...' : 'Send Message →'}
+                    {status === 'loading' ? t('contact.form.submitting') : t('contact.form.submit')}
                   </button>
                 </form>
               )}

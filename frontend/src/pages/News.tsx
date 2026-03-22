@@ -1,22 +1,23 @@
+import { useTranslation } from 'react-i18next';
 import { useFetch } from '../hooks/useApi';
 import type { NewsItem, PaginatedResponse } from '../types';
 import './shared.css';
 import './News.css';
 
-const categories = ['All', 'Admissions', 'Announcement', 'Academic', 'Events'];
-
 export default function News() {
+  const { t } = useTranslation();
   const { data: res, loading } = useFetch<PaginatedResponse<NewsItem>>('/news');
   const news = res?.data;
+  const categories = t('news.categories', { returnObjects: true }) as string[];
 
   return (
     <main>
       <section className="page-hero">
         <div className="page-hero-bg" />
         <div className="container page-hero-content">
-          <span className="section-label" style={{ color: 'var(--accent-light)' }}>News & Events</span>
-          <h1 className="page-hero-title">Latest from UGCSL</h1>
-          <p>Stay updated with the latest news, events, and achievements from our online learning community.</p>
+          <span className="section-label" style={{ color: 'var(--accent-light)' }}>{t('news.label')}</span>
+          <h1 className="page-hero-title">{t('news.heroTitle')}</h1>
+          <p>{t('news.heroDesc')}</p>
         </div>
       </section>
 
@@ -43,7 +44,7 @@ export default function News() {
                     <p>{item.excerpt}</p>
                     <div className="news-article-footer">
                       <span>{new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                      <a href="#">Read More →</a>
+                      <a href="#">{t('news.readMore')}</a>
                     </div>
                   </div>
                 </article>

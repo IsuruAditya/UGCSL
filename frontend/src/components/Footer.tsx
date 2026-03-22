@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from '../assets/logo/ugcsl.jpeg';
 import './Footer.css';
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -15,9 +18,7 @@ export default function Footer() {
                 <div className="footer-logo-sub">United Global Campus of Sri Lanka</div>
               </div>
             </div>
-            <p className="footer-desc">
-              Empowering minds, shaping futures. A world-class institution committed to academic excellence, innovation, and global citizenship.
-            </p>
+            <p className="footer-desc">{t('footer.desc')}</p>
             <div className="footer-socials">
               {['𝕏', 'in', 'f', '▶'].map((s, i) => (
                 <a key={i} href="#" className="social-btn" aria-label="Social">{s}</a>
@@ -26,42 +27,42 @@ export default function Footer() {
           </div>
 
           <div className="footer-links-group">
-            <h4>Academics</h4>
+            <h4>{t('footer.academics')}</h4>
             <ul>
-              <li><Link to="/programs">All Programs</Link></li>
-              <li><Link to="/programs">Diploma Programs</Link></li>
-              <li><Link to="/research">Research</Link></li>
-              <li><Link to="/admissions">Admissions</Link></li>
+              <li><Link to="/programs">{t('footer.allPrograms')}</Link></li>
+              <li><Link to="/programs">{t('footer.diplomaPrograms')}</Link></li>
+              <li><Link to="/research">{t('footer.research')}</Link></li>
+              <li><Link to="/admissions">{t('footer.admissions')}</Link></li>
             </ul>
           </div>
 
           <div className="footer-links-group">
-            <h4>Online Learning</h4>
+            <h4>{t('footer.onlineLearning')}</h4>
             <ul>
-              <li><a href="#">Student Portal</a></li>
-              <li><a href="#">Learning Resources</a></li>
-              <li><a href="#">Academic Calendar</a></li>
-              <li><a href="#">Student Support</a></li>
+              <li><a href="#">{t('footer.studentPortal')}</a></li>
+              <li><a href="#">{t('footer.learningResources')}</a></li>
+              <li><a href="#">{t('footer.academicCalendar')}</a></li>
+              <li><a href="#">{t('footer.studentSupport')}</a></li>
             </ul>
           </div>
 
           <div className="footer-links-group">
-            <h4>Contact</h4>
+            <h4>{t('footer.contact')}</h4>
             <ul>
-              <li><a href="#">📍 Sri Lanka</a></li>
+              <li><a href="#">📍 {t('contact.address')}</a></li>
               <li><a href="mailto:info@ugcsl.edu.lk">✉️ info@ugcsl.edu.lk</a></li>
-              <li><Link to="/contact">💬 Send a Message</Link></li>
-              <li><Link to="/admissions">🎓 Apply Now</Link></li>
+              <li><Link to="/contact">💬 {t('footer.sendMessage')}</Link></li>
+              <li><Link to="/admissions">🎓 {t('footer.applyNow')}</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} United Global Campus of Sri Lanka. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} United Global Campus of Sri Lanka. {t('footer.rights')}</p>
           <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Accessibility</a>
+            <a href="#">{t('footer.privacy')}</a>
+            <a href="#">{t('footer.terms')}</a>
+            <a href="#">{t('footer.accessibility')}</a>
           </div>
         </div>
       </div>

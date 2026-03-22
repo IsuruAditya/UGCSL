@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useFetch } from '../hooks/useApi';
 import type { Program, PaginatedResponse } from '../types';
 import './shared.css';
@@ -8,6 +9,7 @@ import './Programs.css';
 const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business'];
 
 export default function Programs() {
+  const { t } = useTranslation();
   const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');
   const [filter, setFilter] = useState('All');
   const [search, setSearch] = useState('');
@@ -23,9 +25,9 @@ export default function Programs() {
       <section className="page-hero">
         <div className="page-hero-bg" />
         <div className="container page-hero-content">
-          <span className="section-label" style={{ color: 'var(--accent-light)' }}>Academics</span>
-          <h1 className="page-hero-title">Explore Our Programs</h1>
-          <p>Nationally and internationally recognized diploma and degree programs designed for the next generation of professionals.</p>
+          <span className="section-label" style={{ color: 'var(--accent-light)' }}>{t('programs.label')}</span>
+          <h1 className="page-hero-title">{t('programs.heroTitle')}</h1>
+          <p>{t('programs.heroDesc')}</p>
         </div>
       </section>
 
@@ -36,7 +38,7 @@ export default function Programs() {
               <span>🔍</span>
               <input
                 type="text"
-                placeholder="Search programs..."
+                placeholder={t('programs.searchPlaceholder')}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
@@ -48,7 +50,7 @@ export default function Programs() {
                   className={`filter-tab ${filter === f ? 'active' : ''}`}
                   onClick={() => setFilter(f)}
                 >
-                  {f === 'All' ? f : f.replace('Faculty of ', '')}
+                  {f === 'All' ? t('programs.filterAll') : f.replace('Faculty of ', '')}
                 </button>
               ))}
             </div>
@@ -59,7 +61,7 @@ export default function Programs() {
           ) : filtered.length === 0 ? (
             <div className="empty-state">
               <span>🔍</span>
-              <p>No programs found. Try a different search or filter.</p>
+              <p>{t('programs.noResults')}</p>
             </div>
           ) : (
             <div className="grid-3">
@@ -75,7 +77,7 @@ export default function Programs() {
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{p.description}</p>
                     <Link to="/admissions" className="btn btn-dark" style={{ marginTop: '8px', fontSize: '13px', padding: '10px 20px' }}>
-                      Apply Now →
+                      {t('programs.applyNow')}
                     </Link>
                   </div>
                 </div>

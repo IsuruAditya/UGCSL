@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useFetch } from '../hooks/useApi';
 import type { Program, NewsItem, PaginatedResponse } from '../types';
 import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
 const stats = [
-  { value: '4', label: 'Diploma Programs' },
-  { value: '2026', label: 'Established' },
-  { value: '100%', label: 'Qualified Faculty' },
-  { value: '100%', label: 'Online' },
+  { value: '4', key: 'home.stats.programs' },
+  { value: '2026', key: 'home.stats.established' },
+  { value: '100%', key: 'home.stats.faculty' },
+  { value: '100%', key: 'home.stats.online' },
 ];
 
 const faculties = [
@@ -16,15 +17,13 @@ const faculties = [
   { name: 'Faculty of Business', icon: '📈', programs: 1, desc: 'Business and Management' },
 ];
 
-const whyUs = [
-  { icon: '🌍', title: 'Globally Aligned Programs', desc: 'Nationally and internationally recognized qualifications designed for a competitive global landscape.' },
-  { icon: '🎓', title: 'Expert Faculty', desc: 'Learn from qualified academics and industry practitioners committed to your success.' },
-  { icon: '🎯', title: 'Career-Ready Education', desc: 'Programs built to bridge education, professional training, and real-world employability.' },
-  { icon: '💻', title: 'Learn From Anywhere', desc: 'Fully online programs designed for flexibility — study at your own pace from anywhere in Sri Lanka or abroad.' },
-  { icon: '🤝', title: 'Inclusive & Accessible', desc: 'Equitable higher education opportunities open to all segments of society, regardless of location.' },
-];
+const whyKeys = ['online', 'aligned', 'faculty', 'career', 'inclusive'] as const;
+const whyIcons: Record<string, string> = {
+  online: '💻', aligned: '🌍', faculty: '🎓', career: '🎯', inclusive: '🤝',
+};
 
 export default function Home() {
+  const { t } = useTranslation();
   const { data: programsRes, loading: pLoading } = useFetch<PaginatedResponse<Program>>('/programs');
   const { data: newsRes, loading: nLoading } = useFetch<PaginatedResponse<NewsItem>>('/news');
 
@@ -44,24 +43,27 @@ export default function Home() {
           </div>
         </div>
         <div className="container hero-content">
-          <div className="hero-badge">🎓 Admissions Open – Semester 1, 2026</div>
+          <div className="hero-badge">🎓 {t('home.badge')}</div>
           <h1 className="hero-title">
-            Begin Your Journey at<br />
-            <span className="hero-highlight">United Global Campus</span><br />
-            of Sri Lanka
+            {t('home.heroTitle1')}<br />
+            <span className="hero-highlight">{t('home.heroTitle2')}</span><br />
+            {t('home.heroTitle3')}
           </h1>
-          <p className="hero-subtitle">
-            A newly established online higher education institution — offering nationally and internationally recognized diploma programs you can complete entirely from home.
-          </p>
+          <p className="hero-subtitle">{t('home.heroSubtitle')}</p>
           <div className="hero-actions">
-            <Link to="/admissions" className="btn btn-primary">Explore Programs →</Link>
-            <Link to="/about" className="btn btn-outline">Discover UGCSL</Link>
+            <Link to="/admissions" className="btn btn-primary">{t('home.explorePrograms')}</Link>
+            <Link to="/about" className="btn btn-outline">{t('home.discoverUGCSL')}</Link>
           </div>
           <div className="hero-stats">
-            {stats.map((s) => (
-              <div key={s.label} className="hero-stat">
+            {[
+              { value: '4', key: 'home.stats.programs' },
+              { value: '2026', key: 'home.stats.established' },
+              { value: '100%', key: 'home.stats.faculty' },
+              { value: '100%', key: 'home.stats.online' },
+            ].map((s) => (
+              <div key={s.key} className="hero-stat">
                 <span className="hero-stat-value">{s.value}</span>
-                <span className="hero-stat-label">{s.label}</span>
+                <span className="hero-stat-label">{t(s.key)}</span>
               </div>
             ))}
           </div>
@@ -76,20 +78,20 @@ export default function Home() {
         <img src={banner} alt="United Global Campus of Sri Lanka" />
       </section>
 
-      {/* Faculties */}
+      {/* Areas of Study */}
       <section className="section bg-soft">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Explore</span>
-            <h2 className="section-title">Areas of Study</h2>
-            <p className="section-subtitle">Our online diploma programs span two faculties — with more disciplines coming soon.</p>
+            <span className="section-label">{t('home.areasLabel')}</span>
+            <h2 className="section-title">{t('home.areasOfStudy')}</h2>
+            <p className="section-subtitle">{t('home.areasSubtitle')}</p>
           </div>
           <div className="grid-2 faculties-grid">
             {faculties.map((f) => (
               <Link to="/programs" key={f.name} className="faculty-card card">
                 <div className="faculty-icon">{f.icon}</div>
                 <h3>{f.name}</h3>
-                <p className="faculty-programs">{f.programs} {f.programs === 1 ? 'Program' : 'Programs'}</p>
+                <p className="faculty-programs">{f.programs} {f.programs === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
                 <p className="faculty-desc">{f.desc}</p>
                 <span className="faculty-arrow">→</span>
               </Link>
@@ -103,10 +105,10 @@ export default function Home() {
         <div className="container">
           <div className="section-header-row">
             <div>
-              <span className="section-label">Academics</span>
-              <h2 className="section-title">Featured Programs</h2>
+              <span className="section-label">{t('home.academics')}</span>
+              <h2 className="section-title">{t('home.featuredPrograms')}</h2>
             </div>
-            <Link to="/programs" className="btn btn-dark">View All Programs →</Link>
+            <Link to="/programs" className="btn btn-dark">{t('home.viewAllPrograms')}</Link>
           </div>
           {pLoading ? (
             <div className="spinner" />
@@ -123,7 +125,7 @@ export default function Home() {
                     <h3 className="program-title">{p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{p.description}</p>
-                    <Link to="/admissions" className="program-link">Apply Now →</Link>
+                    <Link to="/admissions" className="program-link">{t('home.explorePrograms')}</Link>
                   </div>
                 </div>
               ))}
@@ -137,20 +139,18 @@ export default function Home() {
         <div className="container">
           <div className="why-inner">
             <div className="why-left">
-              <span className="section-label">Why Choose Us</span>
-              <h2 className="section-title">Excellence in Every Dimension</h2>
-              <p className="section-subtitle">
-                UGCSL combines academic rigor with real-world application, preparing graduates who lead in their fields globally.
-              </p>
-              <Link to="/about" className="btn btn-dark" style={{ marginTop: '32px' }}>Learn More About Us →</Link>
+              <span className="section-label">{t('home.whyLabel')}</span>
+              <h2 className="section-title">{t('home.whyTitle')}</h2>
+              <p className="section-subtitle">{t('home.whySubtitle')}</p>
+              <Link to="/about" className="btn btn-dark" style={{ marginTop: '32px' }}>{t('home.learnMore')}</Link>
             </div>
             <div className="why-right">
-              {whyUs.map((w) => (
-                <div key={w.title} className="why-card">
-                  <div className="why-icon">{w.icon}</div>
+              {whyKeys.map((key) => (
+                <div key={key} className="why-card">
+                  <div className="why-icon">{whyIcons[key]}</div>
                   <div>
-                    <h4>{w.title}</h4>
-                    <p>{w.desc}</p>
+                    <h4>{t(`home.why.${key}.title`)}</h4>
+                    <p>{t(`home.why.${key}.desc`)}</p>
                   </div>
                 </div>
               ))}
@@ -164,10 +164,10 @@ export default function Home() {
         <div className="container">
           <div className="section-header-row">
             <div>
-              <span className="section-label">Latest</span>
-              <h2 className="section-title">News & Events</h2>
+              <span className="section-label">{t('home.latestLabel')}</span>
+              <h2 className="section-title">{t('home.newsTitle')}</h2>
             </div>
-            <Link to="/news" className="btn btn-dark">All News →</Link>
+            <Link to="/news" className="btn btn-dark">{t('home.allNews')}</Link>
           </div>
           {nLoading ? (
             <div className="spinner" />
@@ -186,7 +186,7 @@ export default function Home() {
                       <span className="news-date">
                         {new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
-                      <a href="#" className="news-read">Read More →</a>
+                      <a href="#" className="news-read">{t('home.readMore')}</a>
                     </div>
                   </div>
                 </article>
@@ -196,16 +196,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
+      {/* CTA */}
       <section className="cta-section">
         <div className="container cta-inner">
           <div>
-            <h2>Ready to Begin Your Journey?</h2>
-            <p>Be among the first to join United Global Campus of Sri Lanka. Applications for Semester 1, 2026 are now open.</p>
+            <h2>{t('home.ctaTitle')}</h2>
+            <p>{t('home.ctaDesc')}</p>
           </div>
           <div className="cta-actions">
-            <Link to="/admissions" className="btn btn-primary">Apply Now</Link>
-            <Link to="/contact" className="btn btn-outline">Request Info</Link>
+            <Link to="/admissions" className="btn btn-primary">{t('home.applyNow')}</Link>
+            <Link to="/contact" className="btn btn-outline">{t('home.requestInfo')}</Link>
           </div>
         </div>
       </section>
