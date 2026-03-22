@@ -9,8 +9,8 @@ const initialForm: ContactForm = { name: '', email: '', phone: '', subject: '', 
 const subjects = ['General Enquiry', 'Admissions', 'Programs Information', 'Research Collaboration', 'Media & Press', 'Other'];
 
 const contactInfo = [
-  { icon: '📍', label: 'Address', value: '123 University Avenue, Colombo 07, Sri Lanka' },
-  { icon: '📞', label: 'Phone', value: '+94 11 234 5678' },
+  { icon: '📍', label: 'Address', value: 'Sri Lanka' },
+  { icon: '📞', label: 'Phone', value: 'To Be Updated' },
   { icon: '✉️', label: 'Email', value: 'info@ugcsl.edu.lk' },
   { icon: '🕐', label: 'Office Hours', value: 'Mon–Fri: 8:00 AM – 5:00 PM' },
 ];

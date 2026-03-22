@@ -3,7 +3,7 @@ import type { NewsItem, PaginatedResponse } from '../types';
 import './shared.css';
 import './News.css';
 
-const categories = ['All', 'Achievement', 'Research', 'Global', 'Events', 'Academic'];
+const categories = ['All', 'Admissions', 'Announcement', 'Academic', 'Events'];
 
 export default function News() {
   const { data: res, loading } = useFetch<PaginatedResponse<NewsItem>>('/news');

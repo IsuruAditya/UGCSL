@@ -5,19 +5,15 @@ import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
 const stats = [
-  { value: '10+', label: 'Academic Programs' },
-  { value: '2025', label: 'Established' },
+  { value: '4', label: 'Diploma Programs' },
+  { value: '2026', label: 'Established' },
   { value: '100%', label: 'Qualified Faculty' },
   { value: 'Global', label: 'Recognition' },
 ];
 
 const faculties = [
-  { name: 'Technology & Computing', icon: '💻', programs: 2 },
-  { name: 'Business & Management', icon: '📊', programs: 2 },
   { name: 'Social Sciences', icon: '🌍', programs: 3 },
-  { name: 'Law & Legal Studies', icon: '⚖️', programs: 1 },
-  { name: 'Medicine & Health', icon: '🏥', programs: 1 },
-  { name: 'Built Environment', icon: '🏛️', programs: 1 },
+  { name: 'Business & Management', icon: '📈', programs: 1 },
 ];
 
 const whyUs = [
@@ -85,7 +81,7 @@ export default function Home() {
           <div className="section-header">
             <span className="section-label">Explore</span>
             <h2 className="section-title">Our Faculties</h2>
-            <p className="section-subtitle">Six world-class faculties offering cutting-edge programs across diverse disciplines.</p>
+            <p className="section-subtitle">Our current diploma programs span Social Sciences and Business — with more disciplines planned.</p>
           </div>
           <div className="grid-3 faculties-grid">
             {faculties.map((f) => (
@@ -203,7 +199,7 @@ export default function Home() {
         <div className="container cta-inner">
           <div>
             <h2>Ready to Begin Your Journey?</h2>
-            <p>Be among the first to join United Global Campus of Sri Lanka. Applications for 2025/2026 are now open.</p>
+            <p>Be among the first to join United Global Campus of Sri Lanka. Applications for Semester 1, 2026 are now open.</p>
           </div>
           <div className="cta-actions">
             <Link to="/admissions" className="btn btn-primary">Apply Now</Link>
