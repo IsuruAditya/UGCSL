@@ -1,10 +1,12 @@
 export interface Program {
   _id: string;
   title: string;
+  title_si?: string;
   faculty: string;
   degree: string;
   duration: string;
   description: string;
+  description_si?: string;
   icon: string;
   featured: boolean;
 }

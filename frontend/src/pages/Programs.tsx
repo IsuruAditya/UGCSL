@@ -9,7 +9,8 @@ import './Programs.css';
 const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business'];
 
 export default function Programs() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isSi = i18n.language === 'si';
   const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');
   const [filter, setFilter] = useState('All');
   const [search, setSearch] = useState('');
@@ -73,9 +74,9 @@ export default function Programs() {
                       <span className="tag">{p.degree}</span>
                       <span className="program-duration">⏱ {p.duration}</span>
                     </div>
-                    <h3 className="program-title">{p.title}</h3>
+                    <h3 className="program-title">{isSi ? (p.title_si || p.title) : p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
-                    <p className="program-desc">{p.description}</p>
+                    <p className="program-desc">{isSi ? (p.description_si || p.description) : p.description}</p>
                     <Link to="/admissions" className="btn btn-dark" style={{ marginTop: '8px', fontSize: '13px', padding: '10px 20px' }}>
                       {t('programs.applyNow')}
                     </Link>
