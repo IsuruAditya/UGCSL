@@ -8,19 +8,20 @@ const stats = [
   { value: '4', label: 'Diploma Programs' },
   { value: '2026', label: 'Established' },
   { value: '100%', label: 'Qualified Faculty' },
-  { value: 'Global', label: 'Recognition' },
+  { value: '100%', label: 'Online' },
 ];
 
 const faculties = [
-  { name: 'Social Sciences', icon: '🌍', programs: 3 },
-  { name: 'Business & Management', icon: '📈', programs: 1 },
+  { name: 'Faculty of Social Sciences', icon: '🌍', programs: 3, desc: 'Psychology, Human Rights Studies, Social Development' },
+  { name: 'Faculty of Business', icon: '📈', programs: 1, desc: 'Business and Management' },
 ];
 
 const whyUs = [
   { icon: '🌍', title: 'Globally Aligned Programs', desc: 'Nationally and internationally recognized qualifications designed for a competitive global landscape.' },
   { icon: '🎓', title: 'Expert Faculty', desc: 'Learn from qualified academics and industry practitioners committed to your success.' },
   { icon: '🎯', title: 'Career-Ready Education', desc: 'Programs built to bridge education, professional training, and real-world employability.' },
-  { icon: '🤝', title: 'Inclusive & Accessible', desc: 'Equitable higher education opportunities open to all segments of society.' },
+  { icon: '💻', title: 'Learn From Anywhere', desc: 'Fully online programs designed for flexibility — study at your own pace from anywhere in Sri Lanka or abroad.' },
+  { icon: '🤝', title: 'Inclusive & Accessible', desc: 'Equitable higher education opportunities open to all segments of society, regardless of location.' },
 ];
 
 export default function Home() {
@@ -50,7 +51,7 @@ export default function Home() {
             of Sri Lanka
           </h1>
           <p className="hero-subtitle">
-            A newly established higher education institution built on a vision of global excellence — offering nationally and internationally recognized programs for the next generation of leaders.
+            A newly established online higher education institution — offering nationally and internationally recognized diploma programs you can complete entirely from home.
           </p>
           <div className="hero-actions">
             <Link to="/admissions" className="btn btn-primary">Explore Programs →</Link>
@@ -80,15 +81,16 @@ export default function Home() {
         <div className="container">
           <div className="section-header">
             <span className="section-label">Explore</span>
-            <h2 className="section-title">Our Faculties</h2>
-            <p className="section-subtitle">Our current diploma programs span Social Sciences and Business — with more disciplines planned.</p>
+            <h2 className="section-title">Areas of Study</h2>
+            <p className="section-subtitle">Our online diploma programs span two faculties — with more disciplines coming soon.</p>
           </div>
-          <div className="grid-3 faculties-grid">
+          <div className="grid-2 faculties-grid">
             {faculties.map((f) => (
               <Link to="/programs" key={f.name} className="faculty-card card">
                 <div className="faculty-icon">{f.icon}</div>
                 <h3>{f.name}</h3>
-                <p>{f.programs} Programs</p>
+                <p className="faculty-programs">{f.programs} {f.programs === 1 ? 'Program' : 'Programs'}</p>
+                <p className="faculty-desc">{f.desc}</p>
                 <span className="faculty-arrow">→</span>
               </Link>
             ))}
