@@ -29,28 +29,28 @@ export default function Footer() {
             <h4>Academics</h4>
             <ul>
               <li><Link to="/programs">All Programs</Link></li>
-              <li><Link to="/programs">Undergraduate</Link></li>
-              <li><Link to="/programs">Postgraduate</Link></li>
+              <li><Link to="/programs">Diploma Programs</Link></li>
               <li><Link to="/research">Research</Link></li>
+              <li><Link to="/admissions">Admissions</Link></li>
             </ul>
           </div>
 
           <div className="footer-links-group">
-            <h4>Campus Life</h4>
+            <h4>Online Learning</h4>
             <ul>
-              <li><a href="#">Student Services</a></li>
-              <li><a href="#">Library</a></li>
-              <li><a href="#">Sports & Recreation</a></li>
-              <li><a href="#">Accommodation</a></li>
+              <li><a href="#">Student Portal</a></li>
+              <li><a href="#">Learning Resources</a></li>
+              <li><a href="#">Academic Calendar</a></li>
+              <li><a href="#">Student Support</a></li>
             </ul>
           </div>
 
           <div className="footer-links-group">
             <h4>Contact</h4>
             <ul>
-              <li><a href="#">📍 Colombo, Sri Lanka</a></li>
-              <li><a href="tel:+94112345678">📞 +94 11 234 5678</a></li>
+              <li><a href="#">📍 Sri Lanka</a></li>
               <li><a href="mailto:info@ugcsl.edu.lk">✉️ info@ugcsl.edu.lk</a></li>
+              <li><Link to="/contact">💬 Send a Message</Link></li>
               <li><Link to="/admissions">🎓 Apply Now</Link></li>
             </ul>
           </div>

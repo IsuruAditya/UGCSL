@@ -60,47 +60,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Campus */}
-      <section className="section bg-soft">
-        <div className="container">
-          <div className="campus-grid">
-            <div>
-              <span className="section-label">Our Campus</span>
-              <h2 className="section-title">A Modern Learning Environment</h2>
-              <p className="section-subtitle">Our campus is designed from the ground up to inspire creativity, collaboration, and innovation — equipped with modern facilities to support every aspect of student life.</p>
-              <ul className="campus-features">
-                {[
-                  'Modern lecture halls with smart technology',
-                  'Well-equipped laboratories',
-                  'Digital library and learning resources',
-                  'Student common areas and collaboration spaces',
-                  'Innovation and project workspace',
-                  'Accessible and inclusive campus design',
-                ].map((f) => (
-                  <li key={f}><span className="check">✓</span>{f}</li>
-                ))}
-              </ul>
-              <Link to="/contact" className="btn btn-dark" style={{ marginTop: '32px' }}>Get in Touch →</Link>
-            </div>
-            <div className="campus-visual">
-              <div className="campus-img-main">
-                <div className="campus-img-overlay">
-                  <span>🏛️</span>
-                  <p>Main Campus Building</p>
-                </div>
-              </div>
-              <div className="campus-img-grid">
-                {['💻 Tech Lab', '📚 Library', '🤝 Common Area'].map((item) => (
-                  <div key={item} className="campus-img-small">
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Leadership */}
       <section className="section bg-soft">
         <div className="container">
@@ -109,21 +68,10 @@ export default function About() {
             <h2 className="section-title">Our Academic Team</h2>
             <p className="section-subtitle">Led by experienced academics and industry professionals dedicated to delivering quality higher education.</p>
           </div>
-          <div className="grid-4">
-            {[
-              { name: 'To Be Announced', role: 'Vice Chancellor', emoji: '🎓' },
-              { name: 'To Be Announced', role: 'Dean of Academics', emoji: '📚' },
-              { name: 'To Be Announced', role: 'Dean of Research', emoji: '🔬' },
-              { name: 'To Be Announced', role: 'Dean of Students', emoji: '🤝' },
-            ].map((l) => (
-              <div key={l.role} className="leader-card card">
-                <div className="leader-avatar">{l.emoji}</div>
-                <div className="leader-info">
-                  <h4>{l.name}</h4>
-                  <p>{l.role}</p>
-                </div>
-              </div>
-            ))}
+          <div className="leadership-placeholder">
+            <span>🎓</span>
+            <p>Our academic leadership team will be announced shortly. We are committed to bringing together experienced educators and industry professionals to lead UGCSL into its next chapter.</p>
+            <Link to="/contact" className="btn btn-dark" style={{ marginTop: '24px' }}>Get in Touch →</Link>
           </div>
         </div>
       </section>

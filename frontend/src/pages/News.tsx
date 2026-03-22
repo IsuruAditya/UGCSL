@@ -16,7 +16,7 @@ export default function News() {
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>News & Events</span>
           <h1 className="page-hero-title">Latest from UGCSL</h1>
-          <p>Stay updated with the latest news, events, and achievements from our campus community.</p>
+          <p>Stay updated with the latest news, events, and achievements from our online learning community.</p>
         </div>
       </section>
 

@@ -5,7 +5,7 @@ import type { Program, PaginatedResponse } from '../types';
 import './shared.css';
 import './Programs.css';
 
-const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business', 'Faculty of Technology', 'Faculty of Law', 'Faculty of Medicine', 'Faculty of Built Environment'];
+const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business'];
 
 export default function Programs() {
   const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');

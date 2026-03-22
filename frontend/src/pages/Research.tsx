@@ -28,7 +28,7 @@ export default function Research() {
             <h2 className="section-title">Our Research Interests</h2>
             <p className="section-subtitle">Our programs are grounded in research across four key areas aligned with our current diploma offerings.</p>
           </div>
-          <div className="grid-3">
+          <div className="grid-2">
             {areas.map((c) => (
               <div key={c.name} className="research-card card">
                 <div className="research-icon">{c.icon}</div>

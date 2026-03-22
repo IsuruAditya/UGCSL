@@ -42,7 +42,7 @@ export default function Contact() {
         <div className="container page-hero-content">
           <span className="section-label" style={{ color: 'var(--accent-light)' }}>Contact Us</span>
           <h1 className="page-hero-title">We'd Love to Hear<br />From You</h1>
-          <p>Have questions about admissions, programs, or campus life? Our team is here to help.</p>
+          <p>Have questions about admissions, programs, or online learning? Our team is here to help.</p>
         </div>
       </section>
 
