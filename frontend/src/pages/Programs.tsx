@@ -6,18 +6,22 @@ import type { Program, PaginatedResponse } from '../types';
 import './shared.css';
 import './Programs.css';
 
-const faculties = ['All', 'Faculty of Social Sciences', 'Faculty of Business'];
+// Filter values must match DB faculty field exactly
+const FACULTY_FILTER_VALUES = ['All', 'Faculty of Social Sciences', 'Faculty of Business'] as const;
+type FacultyFilter = typeof FACULTY_FILTER_VALUES[number];
 
 export default function Programs() {
   const { t, i18n } = useTranslation();
   const isSi = i18n.language === 'si';
   const { data: res, loading } = useFetch<PaginatedResponse<Program>>('/programs');
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState<FacultyFilter>('All');
   const [search, setSearch] = useState('');
+  const filterLabels = t('programs.facultyFilters', { returnObjects: true }) as string[];
 
   const filtered = res?.data.filter((p) => {
     const matchFaculty = filter === 'All' || p.faculty === filter;
-    const matchSearch = p.title.toLowerCase().includes(search.toLowerCase());
+    const titleToSearch = isSi ? (p.title_si || p.title) : p.title;
+    const matchSearch = titleToSearch.toLowerCase().includes(search.toLowerCase());
     return matchFaculty && matchSearch;
   }) ?? [];
 
@@ -45,13 +49,13 @@ export default function Programs() {
               />
             </div>
             <div className="filter-tabs">
-              {faculties.map((f) => (
+              {FACULTY_FILTER_VALUES.map((value, i) => (
                 <button
-                  key={f}
-                  className={`filter-tab ${filter === f ? 'active' : ''}`}
-                  onClick={() => setFilter(f)}
+                  key={value}
+                  className={`filter-tab ${filter === value ? 'active' : ''}`}
+                  onClick={() => setFilter(value)}
                 >
-                  {f === 'All' ? t('programs.filterAll') : f.replace('Faculty of ', '')}
+                  {filterLabels[i] ?? value}
                 </button>
               ))}
             </div>
@@ -77,9 +81,14 @@ export default function Programs() {
                     <h3 className="program-title">{isSi ? (p.title_si || p.title) : p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{isSi ? (p.description_si || p.description) : p.description}</p>
-                    <Link to="/admissions" className="btn btn-dark" style={{ marginTop: '8px', fontSize: '13px', padding: '10px 20px' }}>
-                      {t('programs.applyNow')}
-                    </Link>
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '8px', flexWrap: 'wrap' }}>
+                      <Link to={`/programs/${p.slug}`} className="btn btn-dark" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                        {t('programs.learnMore')}
+                      </Link>
+                      <Link to="/admissions" className="btn btn-primary" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                        {t('programs.applyNow')}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

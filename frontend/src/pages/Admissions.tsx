@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import FaqItem from '../components/FaqItem';
 import './shared.css';
 import './Admissions.css';
 
@@ -15,10 +16,13 @@ export default function Admissions() {
   const steps = t('admissions.steps', { returnObjects: true }) as { title: string; desc: string }[];
   const diplomaReqs = t('admissions.diplomaRequirements', { returnObjects: true }) as string[];
   const degreeReqs = t('admissions.degreeRequirements', { returnObjects: true }) as string[];
+  const feesIncludes = t('admissions.feesIncludes', { returnObjects: true }) as string[];
+  const scholarshipIncludes = t('admissions.scholarshipIncludes', { returnObjects: true }) as string[];
+  const faqs = t('admissions.faqs', { returnObjects: true }) as { q: string; a: string }[];
 
   const requirements = [
-    { level: 'Diploma', icon: '🎓', items: diplomaReqs },
-    { level: 'Degree', icon: '📚', items: degreeReqs },
+    { level: t('admissions.reqLevelDiploma'), icon: '🎓', items: diplomaReqs },
+    { level: t('admissions.reqLevelDegree'), icon: '📚', items: degreeReqs },
   ];
 
   return (
@@ -84,7 +88,7 @@ export default function Admissions() {
               <div key={r.level} className="req-card card">
                 <div className="req-header">
                   <span className="req-icon">{r.icon}</span>
-                  <h3>{r.level} Programs</h3>
+                  <h3>{r.level}</h3>
                 </div>
                 <ul className="req-list">
                   {r.items.map((item, i) => (
@@ -92,6 +96,54 @@ export default function Admissions() {
                   ))}
                 </ul>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fees */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">{t('admissions.feesLabel')}</span>
+            <h2 className="section-title">{t('admissions.feesTitle')}</h2>
+            <p className="section-subtitle">{t('admissions.feesSubtitle')}</p>
+          </div>
+          <div className="fees-grid">
+            <div className="fee-card card">
+              <div className="fee-icon">🎓</div>
+              <h3>{t('admissions.diplomaCard')}</h3>
+              <div className="fee-amount">LKR 45,000 <span>{t('admissions.feesPerSemester')}</span></div>
+              <p>{t('admissions.feesMeta')}</p>
+              <ul className="fee-includes">
+                {feesIncludes.map((item, i) => <li key={i}>✓ {item}</li>)}
+              </ul>
+              <Link to="/contact" className="btn btn-dark" style={{ marginTop: '20px', width: '100%', justifyContent: 'center' }}>{t('admissions.enquireFees')}</Link>
+            </div>
+            <div className="fee-card fee-card-highlight card">
+              <div className="fee-icon">🏆</div>
+              <h3>{t('admissions.scholarshipCard')}</h3>
+              <div className="fee-amount" style={{ color: 'var(--accent)' }}>{t('admissions.scholarshipAmount')} <span>{t('admissions.scholarshipAmountSub')}</span></div>
+              <p>{t('admissions.scholarshipMeta')}</p>
+              <ul className="fee-includes">
+                {scholarshipIncludes.map((item, i) => <li key={i}>✓ {item}</li>)}
+              </ul>
+              <Link to="/contact" className="btn btn-primary" style={{ marginTop: '20px', width: '100%', justifyContent: 'center' }}>{t('admissions.applyScholarship')}</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section bg-soft">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">{t('admissions.faqLabel')}</span>
+            <h2 className="section-title">{t('admissions.faqTitle')}</h2>
+          </div>
+          <div className="faq-list">
+            {faqs.map((faq, i) => (
+              <FaqItem key={i} q={faq.q} a={faq.a} />
             ))}
           </div>
         </div>

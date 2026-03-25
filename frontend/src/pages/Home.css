@@ -304,6 +304,25 @@
 
 .program-link:hover { color: var(--accent); letter-spacing: 0.02em; }
 
+.hero-accreditation {
+  margin-bottom: 32px;
+  animation: fadeIn 0.7s 0.35s ease both;
+}
+
+.accred-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.02em;
+}
+
 /* Why Section */
 .why-section { background: var(--primary); }
 .why-section .section-title { color: white; }

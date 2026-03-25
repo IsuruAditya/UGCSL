@@ -25,6 +25,20 @@
     "areasOfStudy": "Areas of Study",
     "areasLabel": "Explore",
     "areasSubtitle": "Our online diploma programs span two faculties — with more disciplines coming soon.",
+    "faculties": [
+      {
+        "name": "Faculty of Social Sciences",
+        "desc": "Psychology, Human Rights Studies, Social Development",
+        "icon": "🌍",
+        "count": 3
+      },
+      {
+        "name": "Faculty of Business",
+        "desc": "Business and Management",
+        "icon": "📈",
+        "count": 1
+      }
+    ],
     "programs_count_one": "Program",
     "programs_count_other": "Programs",
     "featuredPrograms": "Featured Programs",
@@ -35,11 +49,26 @@
     "whySubtitle": "UGCSL combines academic rigor with real-world application, preparing graduates who lead in their fields globally.",
     "learnMore": "Learn More About Us →",
     "why": {
-      "online": { "title": "Learn From Anywhere", "desc": "Fully online programs designed for flexibility — study at your own pace from anywhere in Sri Lanka or abroad." },
-      "aligned": { "title": "Globally Aligned Programs", "desc": "Nationally and internationally recognized qualifications designed for a competitive global landscape." },
-      "faculty": { "title": "Expert Faculty", "desc": "Learn from qualified academics and industry practitioners committed to your success." },
-      "career": { "title": "Career-Ready Education", "desc": "Programs built to bridge education, professional training, and real-world employability." },
-      "inclusive": { "title": "Inclusive & Accessible", "desc": "Equitable higher education opportunities open to all segments of society, regardless of location." }
+      "online": {
+        "title": "Learn From Anywhere",
+        "desc": "Fully online programs designed for flexibility — study at your own pace from anywhere in Sri Lanka or abroad."
+      },
+      "aligned": {
+        "title": "Globally Aligned Programs",
+        "desc": "Nationally and internationally recognized qualifications designed for a competitive global landscape."
+      },
+      "faculty": {
+        "title": "Expert Faculty",
+        "desc": "Learn from qualified academics and industry practitioners committed to your success."
+      },
+      "career": {
+        "title": "Career-Ready Education",
+        "desc": "Programs built to bridge education, professional training, and real-world employability."
+      },
+      "inclusive": {
+        "title": "Inclusive & Accessible",
+        "desc": "Equitable higher education opportunities open to all segments of society, regardless of location."
+      }
     },
     "latestLabel": "Latest",
     "newsTitle": "News & Events",
@@ -90,7 +119,9 @@
     "heroDesc": "Nationally and internationally recognized diploma and degree programs designed for the next generation of professionals.",
     "searchPlaceholder": "Search programs...",
     "filterAll": "All",
+    "facultyFilters": ["All", "Social Sciences", "Business"],
     "applyNow": "Apply Now →",
+    "learnMore": "Learn More →",
     "noResults": "No programs found. Try a different search or filter.",
     "degree": "Degree",
     "duration": "Duration"
@@ -106,10 +137,22 @@
     "howToApply": "How to Apply",
     "howToApplySubtitle": "Our streamlined application process makes it easy to take the next step in your academic journey.",
     "steps": [
-      { "title": "Choose Your Program", "desc": "Browse our diploma and degree programs and find the right fit for your career goals." },
-      { "title": "Check Requirements", "desc": "Review entry requirements and supporting documents needed for your chosen program." },
-      { "title": "Submit Application", "desc": "Complete the application form and upload all required documents." },
-      { "title": "Receive Decision", "desc": "Get your admission decision within 2–3 weeks of submitting a complete application." }
+      {
+        "title": "Choose Your Program",
+        "desc": "Browse our diploma and degree programs and find the right fit for your career goals."
+      },
+      {
+        "title": "Check Requirements",
+        "desc": "Review entry requirements and supporting documents needed for your chosen program."
+      },
+      {
+        "title": "Submit Application",
+        "desc": "Complete the application form and upload all required documents."
+      },
+      {
+        "title": "Receive Decision",
+        "desc": "Get your admission decision within 2–3 weeks of submitting a complete application."
+      }
     ],
     "requirementsLabel": "Entry Requirements",
     "requirementsTitle": "What You Need to Apply",
@@ -119,11 +162,85 @@
       "closed": "Closed",
       "upcoming": "Upcoming"
     },
-    "diplomaRequirements": ["O/L or equivalent qualification", "Minimum credits in relevant subjects", "English proficiency", "Completed application form", "Copy of NIC or passport"],
-    "degreeRequirements": ["A/L or equivalent qualification", "Minimum passes at A/L", "English proficiency (IELTS 5.5+ or equivalent)", "Personal statement", "Two academic references"],
+    "diplomaRequirements": [
+      "O/L or equivalent qualification",
+      "Minimum credits in relevant subjects",
+      "English proficiency",
+      "Completed application form",
+      "Copy of NIC or passport"
+    ],
+    "degreeRequirements": [
+      "A/L or equivalent qualification",
+      "Minimum passes at A/L",
+      "English proficiency (IELTS 5.5+ or equivalent)",
+      "Personal statement",
+      "Two academic references"
+    ],
     "scholarshipsTitle": "Scholarships & Financial Aid",
     "scholarshipsDesc": "UGCSL offers merit-based scholarships and financial assistance to eligible students. Contact us to learn more about available opportunities.",
-    "enquireScholarships": "Enquire About Scholarships →"
+    "enquireScholarships": "Enquire About Scholarships →",
+    "feesLabel": "Tuition",
+    "feesTitle": "Fees & Financial Aid",
+    "feesSubtitle": "Transparent, affordable pricing with scholarship opportunities for eligible students.",
+    "diplomaCard": "Diploma Programs",
+    "feesPerSemester": "/ semester",
+    "feesMeta": "2 semesters · 1 year total · 100% online",
+    "feesIncludes": [
+      "All course materials",
+      "Online learning platform access",
+      "Academic support",
+      "Certificate upon completion"
+    ],
+    "enquireFees": "Enquire About Fees",
+    "scholarshipCard": "Scholarships Available",
+    "scholarshipAmount": "Up to 50%",
+    "scholarshipAmountSub": "off tuition",
+    "scholarshipMeta": "Merit-based and need-based scholarships for eligible students",
+    "scholarshipIncludes": [
+      "Academic merit scholarships",
+      "Financial hardship assistance",
+      "Early application discount",
+      "Instalment payment plans"
+    ],
+    "applyScholarship": "Apply for Scholarship",
+    "faqLabel": "FAQ",
+    "faqTitle": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "q": "Are UGCSL qualifications recognized?",
+        "a": "Yes. UGCSL programs are designed to meet national and international recognition standards. Our diplomas are structured in alignment with Sri Lanka Qualifications Framework (SLQF) guidelines."
+      },
+      {
+        "q": "Can I study while working full-time?",
+        "a": "Absolutely. All programs are 100% online and self-paced, designed specifically for working professionals and those with other commitments."
+      },
+      {
+        "q": "What are the minimum entry requirements?",
+        "a": "For diploma programs, you need O/L or equivalent qualifications with minimum credits in relevant subjects, plus basic English proficiency."
+      },
+      {
+        "q": "How long does each program take?",
+        "a": "All current diploma programs are 1 year (2 semesters). Each semester is approximately 6 months."
+      },
+      {
+        "q": "Is there a physical campus I need to attend?",
+        "a": "No. UGCSL is a fully online institution. All lectures, assessments, and support are delivered digitally — you can study from anywhere in Sri Lanka or abroad."
+      },
+      {
+        "q": "When can I apply?",
+        "a": "Applications for Semester 1 – 2026 are currently open. The deadline is March 31, 2026. Semester 2 – 2026 applications open in May 2026."
+      },
+      {
+        "q": "What payment options are available?",
+        "a": "We offer full semester payment and instalment plans. Scholarship and financial aid options are also available for eligible students — contact us to learn more."
+      },
+      {
+        "q": "How do I get my certificate?",
+        "a": "Upon successful completion of all modules and assessments, your certificate will be issued digitally and can also be requested in physical form."
+      }
+    ],
+    "reqLevelDiploma": "Diploma Programs",
+    "reqLevelDegree": "Degree Programs"
   },
   "research": {
     "label": "Research",
@@ -134,10 +251,22 @@
     "focusTitle": "Our Research Interests",
     "focusSubtitle": "Our programs are grounded in research across four key areas aligned with our current diploma offerings.",
     "areas": [
-      { "name": "Psychology & Mental Health", "desc": "Exploring human behaviour, cognitive processes, and mental wellbeing to address growing societal needs." },
-      { "name": "Human Rights & Social Justice", "desc": "Research into international human rights frameworks, advocacy, and policy development." },
-      { "name": "Business & Organisational Development", "desc": "Examining entrepreneurship, management practices, and economic development in the Sri Lankan context." },
-      { "name": "Social Development & Community", "desc": "Studying community-led development, social policy, and sustainable change at local and national levels." }
+      {
+        "name": "Psychology & Mental Health",
+        "desc": "Exploring human behaviour, cognitive processes, and mental wellbeing to address growing societal needs."
+      },
+      {
+        "name": "Human Rights & Social Justice",
+        "desc": "Research into international human rights frameworks, advocacy, and policy development."
+      },
+      {
+        "name": "Business & Organisational Development",
+        "desc": "Examining entrepreneurship, management practices, and economic development in the Sri Lankan context."
+      },
+      {
+        "name": "Social Development & Community",
+        "desc": "Studying community-led development, social policy, and sustainable change at local and national levels."
+      }
     ],
     "collaborateLabel": "Collaborate",
     "collaborateTitle": "Partner With Us",
@@ -182,7 +311,14 @@
       "submit": "Send Message →",
       "submitting": "Sending...",
       "error": "Something went wrong. Please try again.",
-      "subjects": ["General Enquiry", "Admissions", "Programs Information", "Research Collaboration", "Media & Press", "Other"]
+      "subjects": [
+        "General Enquiry",
+        "Admissions",
+        "Programs Information",
+        "Research Collaboration",
+        "Media & Press",
+        "Other"
+      ]
     }
   },
   "footer": {
@@ -204,6 +340,32 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "accessibility": "Accessibility"
+  },
+  "accreditation": "Registered under the Companies Act No. 07 of 2007 · Sri Lanka",
+  "programDetail": {
+    "breadcrumbParent": "Programs",
+    "overviewTitle": "Program Overview",
+    "modulesTitle": "Modules Covered",
+    "outcomesTitle": "Learning Outcomes",
+    "sidebarTitle": "Program Details",
+    "qualification": "Qualification",
+    "duration": "Duration",
+    "faculty": "Faculty",
+    "mode": "Mode",
+    "modeValue": "100% Online",
+    "intake": "Intake",
+    "fees": "Fees",
+    "applyNow": "Apply Now →",
+    "enquire": "Enquire →",
+    "requirementsTitle": "Entry Requirements",
+    "careersLabel": "Career Pathways",
+    "careersTitle": "Where This Program Takes You",
+    "ctaTitle": "Ready to Enrol in",
+    "ctaDesc": "Applications for Semester 1 – 2026 are now open. Take the next step in your academic journey.",
+    "ctaApply": "Apply Now",
+    "ctaBack": "← All Programs",
+    "notFound": "Program not found.",
+    "backToPrograms": "← Back to Programs"
   },
   "notFound": {
     "title": "Page Not Found",

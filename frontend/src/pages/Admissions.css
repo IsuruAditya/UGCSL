@@ -149,3 +149,122 @@
   .req-card { padding: 24px 20px; }
   .intakes-grid { gap: 12px; }
 }
+
+/* Fees */
+.fees-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.fee-card {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fee-card-highlight {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.fee-icon { font-size: 2.2rem; }
+
+.fee-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.fee-amount {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+}
+
+.fee-amount span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.fee-card > p {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.fee-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.fee-includes li {
+  font-size: 14px;
+  color: var(--text);
+  display: flex;
+  gap: 8px;
+}
+
+/* FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child { border-bottom: none; }
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 28px;
+  background: white;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.faq-question:hover { background: var(--bg-soft); color: var(--primary); }
+.faq-item.open .faq-question { color: var(--primary); background: var(--bg-soft); }
+
+.faq-chevron {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--accent);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.faq-answer {
+  padding: 0 28px 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  background: var(--bg-soft);
+}
+
+@media (max-width: 768px) {
+  .fees-grid { grid-template-columns: 1fr; }
+  .fee-card { padding: 28px 24px; }
+  .faq-question { padding: 16px 20px; font-size: 14px; }
+  .faq-answer { padding: 0 20px 16px; }
+}

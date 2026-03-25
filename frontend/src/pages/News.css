@@ -93,6 +93,13 @@
 
 .news-article-footer a:hover { color: var(--accent); }
 
+.news-read-more {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 /* Reuse filter-tab from Programs.css */
 .filter-tab {
   padding: 8px 18px;

@@ -11,6 +11,7 @@ import Admissions from './pages/Admissions';
 import Research from './pages/Research';
 import News from './pages/News';
 import Contact from './pages/Contact';
+import ProgramDetail from './pages/ProgramDetail';
 import NotFound from './pages/NotFound';
 
 const PAGE_TITLES: Record<string, string> = {
@@ -26,13 +27,13 @@ const PAGE_TITLES: Record<string, string> = {
 function PageMeta() {
   const { pathname } = useLocation();
   const { i18n } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = PAGE_TITLES[pathname] ?? 'UGCSL – United Global Campus of Sri Lanka';
-  }, [pathname]);
-  useEffect(() => {
     document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
+  }, [pathname, i18n.language]);
+
   return null;
 }
 
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/programs" element={<Programs />} />
+            <Route path="/programs/:slug" element={<ProgramDetail />} />
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/research" element={<Research />} />
             <Route path="/news" element={<News />} />

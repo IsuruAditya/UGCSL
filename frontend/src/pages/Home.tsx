@@ -5,11 +5,6 @@ import type { Program, NewsItem, PaginatedResponse } from '../types';
 import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
-const faculties = [
-  { name: 'Faculty of Social Sciences', icon: '🌍', programs: 3, desc: 'Psychology, Human Rights Studies, Social Development' },
-  { name: 'Faculty of Business', icon: '📈', programs: 1, desc: 'Business and Management' },
-];
-
 const whyKeys = ['online', 'aligned', 'faculty', 'career', 'inclusive'] as const;
 const whyIcons: Record<string, string> = {
   online: '💻', aligned: '🌍', faculty: '🎓', career: '🎯', inclusive: '🤝',
@@ -18,6 +13,7 @@ const whyIcons: Record<string, string> = {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const isSi = i18n.language === 'si';
+  const faculties = t('home.faculties', { returnObjects: true }) as { name: string; desc: string; icon: string; count: number }[];
   const { data: programsRes, loading: pLoading } = useFetch<PaginatedResponse<Program>>('/programs');
   const { data: newsRes, loading: nLoading } = useFetch<PaginatedResponse<NewsItem>>('/news');
 
@@ -48,6 +44,11 @@ export default function Home() {
             <Link to="/admissions" className="btn btn-primary">{t('home.explorePrograms')}</Link>
             <Link to="/about" className="btn btn-outline">{t('home.discoverUGCSL')}</Link>
           </div>
+          {/* accreditation badge – hidden for now
+          <div className="hero-accreditation">
+            <span className="accred-badge">🏛️ {t('accreditation')}</span>
+          </div>
+          */}
           <div className="hero-stats">
             {[
               { value: '4', key: 'home.stats.programs' },
@@ -85,7 +86,7 @@ export default function Home() {
               <Link to="/programs" key={f.name} className="faculty-card card">
                 <div className="faculty-icon">{f.icon}</div>
                 <h3>{f.name}</h3>
-                <p className="faculty-programs">{f.programs} {f.programs === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
+                <p className="faculty-programs">{f.count} {f.count === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
                 <p className="faculty-desc">{f.desc}</p>
                 <span className="faculty-arrow">→</span>
               </Link>
@@ -119,7 +120,7 @@ export default function Home() {
                     <h3 className="program-title">{isSi ? (p.title_si || p.title) : p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{isSi ? (p.description_si || p.description) : p.description}</p>
-                    <Link to="/admissions" className="program-link">{t('home.explorePrograms')}</Link>
+                    <Link to={`/programs/${p.slug}`} className="program-link">{t('home.explorePrograms')}</Link>
                   </div>
                 </div>
               ))}
@@ -180,7 +181,7 @@ export default function Home() {
                       <span className="news-date">
                         {new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
-                      <a href="#" className="news-read">{t('home.readMore')}</a>
+                      <span className="news-read">{t('home.readMore')}</span>
                     </div>
                   </div>
                 </article>
