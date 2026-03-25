@@ -5,16 +5,6 @@ import type { Program, NewsItem, PaginatedResponse } from '../types';
 import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
-const FACULTY_ICONS: Record<string, string> = {
-  'Faculty of Social Sciences': '🌍',
-  'Faculty of Business': '📈',
-};
-
-const FACULTY_PROGRAMS: Record<string, number> = {
-  'Faculty of Social Sciences': 3,
-  'Faculty of Business': 1,
-};
-
 const whyKeys = ['online', 'aligned', 'faculty', 'career', 'inclusive'] as const;
 const whyIcons: Record<string, string> = {
   online: '💻', aligned: '🌍', faculty: '🎓', career: '🎯', inclusive: '🤝',
@@ -23,7 +13,7 @@ const whyIcons: Record<string, string> = {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const isSi = i18n.language === 'si';
-  const faculties = t('home.faculties', { returnObjects: true }) as { name: string; desc: string }[];
+  const faculties = t('home.faculties', { returnObjects: true }) as { name: string; desc: string; icon: string; count: number }[];
   const { data: programsRes, loading: pLoading } = useFetch<PaginatedResponse<Program>>('/programs');
   const { data: newsRes, loading: nLoading } = useFetch<PaginatedResponse<NewsItem>>('/news');
 
@@ -92,18 +82,15 @@ export default function Home() {
             <p className="section-subtitle">{t('home.areasSubtitle')}</p>
           </div>
           <div className="grid-2 faculties-grid">
-            {faculties.map((f, i) => {
-              const key = i === 0 ? 'Faculty of Social Sciences' : 'Faculty of Business';
-              return (
-                <Link to="/programs" key={key} className="faculty-card card">
-                  <div className="faculty-icon">{FACULTY_ICONS[key]}</div>
-                  <h3>{f.name}</h3>
-                  <p className="faculty-programs">{FACULTY_PROGRAMS[key]} {FACULTY_PROGRAMS[key] === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
-                  <p className="faculty-desc">{f.desc}</p>
-                  <span className="faculty-arrow">→</span>
-                </Link>
-              );
-            })}
+            {faculties.map((f) => (
+              <Link to="/programs" key={f.name} className="faculty-card card">
+                <div className="faculty-icon">{f.icon}</div>
+                <h3>{f.name}</h3>
+                <p className="faculty-programs">{f.count} {f.count === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
+                <p className="faculty-desc">{f.desc}</p>
+                <span className="faculty-arrow">→</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
