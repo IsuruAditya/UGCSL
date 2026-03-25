@@ -11,12 +11,19 @@ export interface Program {
   icon: string;
   featured: boolean;
   overview?: string;
+  overview_si?: string;
   modules?: string[];
+  modules_si?: string[];
   outcomes?: string[];
+  outcomes_si?: string[];
   careers?: string[];
+  careers_si?: string[];
   requirements?: string[];
+  requirements_si?: string[];
   fees?: string;
+  fees_si?: string;
   intake?: string;
+  intake_si?: string;
 }
 
 export interface NewsItem {

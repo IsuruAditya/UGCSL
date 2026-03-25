@@ -21,6 +21,13 @@ export default function ProgramDetail() {
 
   const title = isSi ? (p.title_si || p.title) : p.title;
   const description = isSi ? (p.description_si || p.description) : p.description;
+  const overview = isSi ? (p.overview_si || p.overview) : p.overview;
+  const modules = isSi ? (p.modules_si?.length ? p.modules_si : p.modules) : p.modules;
+  const outcomes = isSi ? (p.outcomes_si?.length ? p.outcomes_si : p.outcomes) : p.outcomes;
+  const careers = isSi ? (p.careers_si?.length ? p.careers_si : p.careers) : p.careers;
+  const requirements = isSi ? (p.requirements_si?.length ? p.requirements_si : p.requirements) : p.requirements;
+  const fees = isSi ? (p.fees_si || p.fees) : p.fees;
+  const intake = isSi ? (p.intake_si || p.intake) : p.intake;
 
   return (
     <main>
@@ -39,7 +46,7 @@ export default function ProgramDetail() {
             <span className="pd-meta-pill">🎓 {p.degree}</span>
             <span className="pd-meta-pill">⏱ {p.duration}</span>
             <span className="pd-meta-pill">🏛 {p.faculty}</span>
-            {p.intake && <span className="pd-meta-pill pd-meta-open">📅 {p.intake}</span>}
+            {p.intake && <span className="pd-meta-pill pd-meta-open">📅 {intake}</span>}
           </div>
         </div>
       </section>
@@ -48,22 +55,22 @@ export default function ProgramDetail() {
         <div className="container pd-overview-grid">
           <div className="pd-overview">
             <h2 className="pd-section-title">{t('programDetail.overviewTitle')}</h2>
-            <p className="pd-overview-text">{p.overview}</p>
+            <p className="pd-overview-text">{overview}</p>
 
-            {p.modules && p.modules.length > 0 && (
+            {modules && modules.length > 0 && (
               <div className="pd-block">
                 <h3 className="pd-block-title">📚 {t('programDetail.modulesTitle')}</h3>
                 <ul className="pd-list pd-list-modules">
-                  {p.modules.map((m, i) => <li key={i}>{m}</li>)}
+                  {modules.map((m, i) => <li key={i}>{m}</li>)}
                 </ul>
               </div>
             )}
 
-            {p.outcomes && p.outcomes.length > 0 && (
+            {outcomes && outcomes.length > 0 && (
               <div className="pd-block">
                 <h3 className="pd-block-title">🎯 {t('programDetail.outcomesTitle')}</h3>
                 <ul className="pd-list pd-list-check">
-                  {p.outcomes.map((o, i) => (
+                  {outcomes.map((o, i) => (
                     <li key={i}><span className="check">✓</span>{o}</li>
                   ))}
                 </ul>
@@ -79,8 +86,8 @@ export default function ProgramDetail() {
                 <li><span>{t('programDetail.duration')}</span><strong>{p.duration}</strong></li>
                 <li><span>{t('programDetail.faculty')}</span><strong>{p.faculty}</strong></li>
                 <li><span>{t('programDetail.mode')}</span><strong>{t('programDetail.modeValue')}</strong></li>
-                {p.intake && <li><span>{t('programDetail.intake')}</span><strong>{p.intake}</strong></li>}
-                {p.fees && <li><span>{t('programDetail.fees')}</span><strong>{p.fees}</strong></li>}
+                {p.intake && <li><span>{t('programDetail.intake')}</span><strong>{intake}</strong></li>}
+                {p.fees && <li><span>{t('programDetail.fees')}</span><strong>{fees}</strong></li>}
               </ul>
               <Link to="/admissions" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '24px' }}>
                 {t('programDetail.applyNow')}
@@ -90,11 +97,11 @@ export default function ProgramDetail() {
               </Link>
             </div>
 
-            {p.requirements && p.requirements.length > 0 && (
+            {requirements && requirements.length > 0 && (
               <div className="pd-sidebar-card">
                 <h3>{t('programDetail.requirementsTitle')}</h3>
                 <ul className="pd-list pd-list-check" style={{ marginTop: '12px' }}>
-                  {p.requirements.map((r, i) => (
+                  {requirements.map((r, i) => (
                     <li key={i}><span className="check">✓</span>{r}</li>
                   ))}
                 </ul>
@@ -104,7 +111,7 @@ export default function ProgramDetail() {
         </div>
       </section>
 
-      {p.careers && p.careers.length > 0 && (
+      {careers && careers.length > 0 && (
         <section className="section bg-soft">
           <div className="container">
             <div className="section-header">
@@ -112,7 +119,7 @@ export default function ProgramDetail() {
               <h2 className="section-title">{t('programDetail.careersTitle')}</h2>
             </div>
             <div className="pd-careers-grid">
-              {p.careers.map((c, i) => (
+              {careers.map((c, i) => (
                 <div key={i} className="pd-career-card">
                   <span className="pd-career-icon">💼</span>
                   <span>{c}</span>

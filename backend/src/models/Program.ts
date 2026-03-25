@@ -12,12 +12,19 @@ export interface IProgram extends Document {
   icon: string;
   featured: boolean;
   overview: string;
+  overview_si: string;
   modules: string[];
+  modules_si: string[];
   outcomes: string[];
+  outcomes_si: string[];
   careers: string[];
+  careers_si: string[];
   requirements: string[];
+  requirements_si: string[];
   fees: string;
+  fees_si: string;
   intake: string;
+  intake_si: string;
 }
 
 const ProgramSchema = new Schema<IProgram>({
@@ -32,12 +39,19 @@ const ProgramSchema = new Schema<IProgram>({
   icon: { type: String, default: '🎓' },
   featured: { type: Boolean, default: false },
   overview: { type: String, default: '' },
+  overview_si: { type: String, default: '' },
   modules: [{ type: String }],
+  modules_si: [{ type: String }],
   outcomes: [{ type: String }],
+  outcomes_si: [{ type: String }],
   careers: [{ type: String }],
+  careers_si: [{ type: String }],
   requirements: [{ type: String }],
+  requirements_si: [{ type: String }],
   fees: { type: String, default: '' },
+  fees_si: { type: String, default: '' },
   intake: { type: String, default: '' },
+  intake_si: { type: String, default: '' },
 });
 
 export default mongoose.model<IProgram>('Program', ProgramSchema);
