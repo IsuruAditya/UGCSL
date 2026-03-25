@@ -77,9 +77,14 @@ export default function Programs() {
                     <h3 className="program-title">{isSi ? (p.title_si || p.title) : p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{isSi ? (p.description_si || p.description) : p.description}</p>
-                    <Link to="/admissions" className="btn btn-dark" style={{ marginTop: '8px', fontSize: '13px', padding: '10px 20px' }}>
-                      {t('programs.applyNow')}
-                    </Link>
+                    <div style={{ display: 'flex', gap: '8px', marginTop: '8px', flexWrap: 'wrap' }}>
+                      <Link to={`/programs/${p.slug}`} className="btn btn-dark" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                        {t('programs.learnMore')}
+                      </Link>
+                      <Link to="/admissions" className="btn btn-primary" style={{ fontSize: '13px', padding: '10px 20px' }}>
+                        {t('programs.applyNow')}
+                      </Link>
+                    </div>
                   </div>
                 </div>
               ))}

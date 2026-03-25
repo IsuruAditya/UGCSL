@@ -2,6 +2,7 @@ export interface Program {
   _id: string;
   title: string;
   title_si?: string;
+  slug: string;
   faculty: string;
   degree: string;
   duration: string;
@@ -9,6 +10,13 @@ export interface Program {
   description_si?: string;
   icon: string;
   featured: boolean;
+  overview?: string;
+  modules?: string[];
+  outcomes?: string[];
+  careers?: string[];
+  requirements?: string[];
+  fees?: string;
+  intake?: string;
 }
 
 export interface NewsItem {

@@ -59,6 +59,9 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} United Global Campus of Sri Lanka. {t('footer.rights')}</p>
+          {/* accreditation badge – hidden for now
+          <div className="footer-accred">🏛️ {t('accreditation')}</div>
+          */}
           <div className="footer-bottom-links">
             <a href="#">{t('footer.privacy')}</a>
             <a href="#">{t('footer.terms')}</a>

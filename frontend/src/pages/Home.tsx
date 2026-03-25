@@ -48,6 +48,11 @@ export default function Home() {
             <Link to="/admissions" className="btn btn-primary">{t('home.explorePrograms')}</Link>
             <Link to="/about" className="btn btn-outline">{t('home.discoverUGCSL')}</Link>
           </div>
+          {/* accreditation badge – hidden for now
+          <div className="hero-accreditation">
+            <span className="accred-badge">🏛️ {t('accreditation')}</span>
+          </div>
+          */}
           <div className="hero-stats">
             {[
               { value: '4', key: 'home.stats.programs' },
@@ -119,7 +124,7 @@ export default function Home() {
                     <h3 className="program-title">{isSi ? (p.title_si || p.title) : p.title}</h3>
                     <p className="program-faculty">{p.faculty}</p>
                     <p className="program-desc">{isSi ? (p.description_si || p.description) : p.description}</p>
-                    <Link to="/admissions" className="program-link">{t('home.explorePrograms')}</Link>
+                    <Link to={`/programs/${p.slug}`} className="program-link">{t('home.explorePrograms')}</Link>
                   </div>
                 </div>
               ))}

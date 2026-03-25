@@ -11,6 +11,7 @@ import Admissions from './pages/Admissions';
 import Research from './pages/Research';
 import News from './pages/News';
 import Contact from './pages/Contact';
+import ProgramDetail from './pages/ProgramDetail';
 import NotFound from './pages/NotFound';
 
 const PAGE_TITLES: Record<string, string> = {
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/programs" element={<Programs />} />
+            <Route path="/programs/:slug" element={<ProgramDetail />} />
             <Route path="/admissions" element={<Admissions />} />
             <Route path="/research" element={<Research />} />
             <Route path="/news" element={<News />} />
