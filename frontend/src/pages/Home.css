@@ -448,9 +448,19 @@
 }
 
 @media (max-width: 768px) {
-  .hero-stats { gap: 28px; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .hero-stat-value { font-size: 1.6rem; }
+  .hero-content { padding-top: 100px; padding-bottom: 60px; }
+  .hero-actions { gap: 12px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
   .why-inner { grid-template-columns: 1fr; gap: 40px; }
   .cta-inner { flex-direction: column; text-align: center; }
-  .cta-actions { justify-content: center; }
+  .cta-actions { justify-content: center; width: 100%; }
+  .cta-actions .btn { flex: 1; justify-content: center; }
   .section-header-row { flex-direction: column; align-items: flex-start; }
+  .home-banner { max-height: 220px; }
+  .home-banner img { height: 220px; }
+  .faculty-card { padding: 24px; }
+  .program-body { padding: 16px 20px 20px; }
+  .program-icon { padding: 20px 20px 0; }
 }

@@ -218,4 +218,6 @@
   .timeline::before { left: 20px; }
   .timeline-item, .timeline-item.right { padding: 0 0 0 56px; justify-content: flex-start; }
   .timeline-dot { left: 20px; }
+  .timeline-content { max-width: 100%; }
+  .mv-card { padding: 28px 24px; }
 }

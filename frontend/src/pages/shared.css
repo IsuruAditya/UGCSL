@@ -1,8 +1,13 @@
 /* Shared inner page styles */
 .page-hero {
   position: relative;
-  padding: 160px 0 100px;
+  padding: 140px 0 80px;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .page-hero { padding: 110px 0 56px; }
+  .page-hero-title { font-size: clamp(1.6rem, 7vw, 2.4rem); }
 }
 
 .page-hero-bg {

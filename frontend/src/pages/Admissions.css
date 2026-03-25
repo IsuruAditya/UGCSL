@@ -146,4 +146,6 @@
 
 @media (max-width: 600px) {
   .steps-grid { grid-template-columns: 1fr; }
+  .req-card { padding: 24px 20px; }
+  .intakes-grid { gap: 12px; }
 }

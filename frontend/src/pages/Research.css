@@ -93,5 +93,7 @@
 }
 
 @media (max-width: 600px) {
-  .research-stats { grid-template-columns: 1fr 1fr; }
+  .research-stats { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .research-stat-value { font-size: 1.8rem; }
+  .research-card { padding: 24px 20px; }
 }
