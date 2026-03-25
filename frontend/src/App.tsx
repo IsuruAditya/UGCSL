@@ -27,13 +27,13 @@ const PAGE_TITLES: Record<string, string> = {
 function PageMeta() {
   const { pathname } = useLocation();
   const { i18n } = useTranslation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = PAGE_TITLES[pathname] ?? 'UGCSL – United Global Campus of Sri Lanka';
-  }, [pathname]);
-  useEffect(() => {
     document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
+  }, [pathname, i18n.language]);
+
   return null;
 }
 

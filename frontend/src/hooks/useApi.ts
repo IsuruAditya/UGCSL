@@ -9,9 +9,14 @@ let csrfToken: string | null = null;
 
 async function getCsrfToken(): Promise<string> {
   if (csrfToken) return csrfToken;
-  const res = await api.get<{ csrfToken: string }>('/csrf-token');
-  csrfToken = res.data.csrfToken;
-  return csrfToken;
+  try {
+    const res = await api.get<{ csrfToken: string }>('/csrf-token');
+    csrfToken = res.data.csrfToken;
+    return csrfToken;
+  } catch (err) {
+    csrfToken = null;
+    throw err;
+  }
 }
 
 export function useFetch<T>(endpoint: string) {

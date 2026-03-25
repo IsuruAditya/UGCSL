@@ -25,6 +25,10 @@
     "areasOfStudy": "Areas of Study",
     "areasLabel": "Explore",
     "areasSubtitle": "Our online diploma programs span two faculties — with more disciplines coming soon.",
+    "faculties": [
+      { "name": "Faculty of Social Sciences", "desc": "Psychology, Human Rights Studies, Social Development" },
+      { "name": "Faculty of Business", "desc": "Business and Management" }
+    ],
     "programs_count_one": "Program",
     "programs_count_other": "Programs",
     "featuredPrograms": "Featured Programs",
@@ -90,6 +94,7 @@
     "heroDesc": "Nationally and internationally recognized diploma and degree programs designed for the next generation of professionals.",
     "searchPlaceholder": "Search programs...",
     "filterAll": "All",
+    "facultyFilters": ["All", "Social Sciences", "Business"],
     "applyNow": "Apply Now →",
     "learnMore": "Learn More →",
     "noResults": "No programs found. Try a different search or filter.",

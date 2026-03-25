@@ -5,10 +5,15 @@ import type { Program, NewsItem, PaginatedResponse } from '../types';
 import banner from '../assets/campus/banner.jpeg';
 import './Home.css';
 
-const faculties = [
-  { name: 'Faculty of Social Sciences', icon: '🌍', programs: 3, desc: 'Psychology, Human Rights Studies, Social Development' },
-  { name: 'Faculty of Business', icon: '📈', programs: 1, desc: 'Business and Management' },
-];
+const FACULTY_ICONS: Record<string, string> = {
+  'Faculty of Social Sciences': '🌍',
+  'Faculty of Business': '📈',
+};
+
+const FACULTY_PROGRAMS: Record<string, number> = {
+  'Faculty of Social Sciences': 3,
+  'Faculty of Business': 1,
+};
 
 const whyKeys = ['online', 'aligned', 'faculty', 'career', 'inclusive'] as const;
 const whyIcons: Record<string, string> = {
@@ -18,6 +23,7 @@ const whyIcons: Record<string, string> = {
 export default function Home() {
   const { t, i18n } = useTranslation();
   const isSi = i18n.language === 'si';
+  const faculties = t('home.faculties', { returnObjects: true }) as { name: string; desc: string }[];
   const { data: programsRes, loading: pLoading } = useFetch<PaginatedResponse<Program>>('/programs');
   const { data: newsRes, loading: nLoading } = useFetch<PaginatedResponse<NewsItem>>('/news');
 
@@ -86,15 +92,18 @@ export default function Home() {
             <p className="section-subtitle">{t('home.areasSubtitle')}</p>
           </div>
           <div className="grid-2 faculties-grid">
-            {faculties.map((f) => (
-              <Link to="/programs" key={f.name} className="faculty-card card">
-                <div className="faculty-icon">{f.icon}</div>
-                <h3>{f.name}</h3>
-                <p className="faculty-programs">{f.programs} {f.programs === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
-                <p className="faculty-desc">{f.desc}</p>
-                <span className="faculty-arrow">→</span>
-              </Link>
-            ))}
+            {faculties.map((f, i) => {
+              const key = i === 0 ? 'Faculty of Social Sciences' : 'Faculty of Business';
+              return (
+                <Link to="/programs" key={key} className="faculty-card card">
+                  <div className="faculty-icon">{FACULTY_ICONS[key]}</div>
+                  <h3>{f.name}</h3>
+                  <p className="faculty-programs">{FACULTY_PROGRAMS[key]} {FACULTY_PROGRAMS[key] === 1 ? t('home.programs_count_one') : t('home.programs_count_other')}</p>
+                  <p className="faculty-desc">{f.desc}</p>
+                  <span className="faculty-arrow">→</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -185,7 +194,7 @@ export default function Home() {
                       <span className="news-date">
                         {new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
-                      <a href="#" className="news-read">{t('home.readMore')}</a>
+                      <span className="news-read">{t('home.readMore')}</span>
                     </div>
                   </div>
                 </article>

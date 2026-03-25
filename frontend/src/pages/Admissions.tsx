@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import FaqItem from '../components/FaqItem';
 import './shared.css';
 import './Admissions.css';
 
@@ -10,21 +10,6 @@ const intakes = [
   { semester: 'Semester 1 – 2026', deadline: 'March 31, 2026', statusKey: 'open' },
   { semester: 'Semester 2 – 2026', deadline: 'August 31, 2026', statusKey: 'upcoming' },
 ];
-
-
-
-function FaqItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className={`faq-item ${open ? 'open' : ''}`}>
-      <button className="faq-question" onClick={() => setOpen(!open)}>
-        <span>{q}</span>
-        <span className="faq-chevron">{open ? '−' : '+'}</span>
-      </button>
-      {open && <div className="faq-answer">{a}</div>}
-    </div>
-  );
-}
 
 export default function Admissions() {
   const { t } = useTranslation();

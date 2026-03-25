@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFetch } from '../hooks/useApi';
 import type { NewsItem, PaginatedResponse } from '../types';
@@ -7,8 +8,12 @@ import './News.css';
 export default function News() {
   const { t } = useTranslation();
   const { data: res, loading } = useFetch<PaginatedResponse<NewsItem>>('/news');
-  const news = res?.data;
   const categories = t('news.categories', { returnObjects: true }) as string[];
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const news = res?.data.filter((item) =>
+    activeCategory === categories[0] || item.category === activeCategory
+  );
 
   return (
     <main>
@@ -25,7 +30,13 @@ export default function News() {
         <div className="container">
           <div className="news-categories">
             {categories.map((c) => (
-              <button key={c} className="filter-tab">{c}</button>
+              <button
+                key={c}
+                className={`filter-tab ${c === activeCategory ? 'active' : ''}`}
+                onClick={() => setActiveCategory(c)}
+              >
+                {c}
+              </button>
             ))}
           </div>
 
@@ -44,7 +55,7 @@ export default function News() {
                     <p>{item.excerpt}</p>
                     <div className="news-article-footer">
                       <span>{new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                      <a href="#">{t('news.readMore')}</a>
+                      <span className="news-read-more">{t('news.readMore')}</span>
                     </div>
                   </div>
                 </article>

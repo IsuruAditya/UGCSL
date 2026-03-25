@@ -9,7 +9,7 @@ export default function ProgramDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { t, i18n } = useTranslation();
   const isSi = i18n.language === 'si';
-  const { data: p, loading, error } = useFetch<Program>(`/programs/${slug}`);
+  const { data: p, loading, error } = useFetch<Program>(slug ? `/programs/${slug}` : '');
 
   if (loading) return <main><div className="spinner" style={{ marginTop: '160px' }} /></main>;
   if (error || !p) return (
